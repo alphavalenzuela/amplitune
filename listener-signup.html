@@ -1,0 +1,179 @@
+<!-- Save this as listener-signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listener Registration | AmpliTune</title>
+  <link rel="stylesheet" href="styles/index.css" />
+  <link rel="stylesheet" href="styles/listener-signup.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="body-container">
+    <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background" />
+  </div>
+  <div class="content">
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">Ampli<span class="gradient-text">Tune</span></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="index.html#app-showcase">Features</a></li>
+          <li><a href="login.html" class="nav-button signup-button">Log In</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Listener Signup Header -->
+    <section id="listener-header">
+      <div class="container">
+        <div class="listener-header-content">
+          <h1>Join Our Music Community</h1>
+          <p>Discover your next favorite artists and tracks</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Listener Registration Form -->
+    <section id="listener-signup">
+      <div class="container">
+        <div class="registration-form">
+          <h2>Create Your Listener Account</h2>
+          <form id="listener-form">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" placeholder="Choose a unique username" required />
+              <div class="error-message" id="username-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="full-name" placeholder="Your full name" required />
+              <div class="error-message" id="full-name-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="listener-email">Email Address</label>
+              <input type="email" id="listener-email" name="listener-email" placeholder="you@example.com" required />
+              <div class="error-message" id="listener-email-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="listener-password">Password</label>
+              <input type="password" id="listener-password" name="listener-password" placeholder="Create a password" required />
+              <div class="error-message" id="listener-password-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label>What genres do you enjoy?</label>
+              <div class="checkbox-grid">
+                <div class="checkbox-item"><input type="checkbox" id="pop" value="pop" name="genres[]" /><label for="pop">Pop</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="rock" value="rock" name="genres[]" /><label for="rock">Rock</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="hiphop" value="hiphop" name="genres[]" /><label for="hiphop">Hip Hop</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="rnb" value="rnb" name="genres[]" /><label for="rnb">R&B</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="electronic" value="electronic" name="genres[]" /><label for="electronic">Electronic</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="jazz" value="jazz" name="genres[]" /><label for="jazz">Jazz</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="classical" value="classical" name="genres[]" /><label for="classical">Classical</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="country" value="country" name="genres[]" /><label for="country">Country</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="folk" value="folk" name="genres[]" /><label for="folk">Folk</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="indie" value="indie" name="genres[]" /><label for="indie">Indie</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="metal" value="metal" name="genres[]" /><label for="metal">Metal</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="other" value="other" name="genres[]" /><label for="other">Other</label></div>
+              </div>
+              <div class="error-message" id="genres-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="listening-habits">How do you discover new music?</label>
+              <select id="listening-habits" name="listening-habits">
+                <option value="">Select an option</option>
+                <option value="recommendations">Friend Recommendations</option>
+                <option value="streaming">Streaming Services</option>
+                <option value="radio">Radio</option>
+                <option value="social">Social Media</option>
+                <option value="live">Live Events</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="error-message" id="listening-habits-error"></div>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="listener-terms" required />
+              <label for="listener-terms">I agree to the <a href="#">Terms</a> and <a href="#">Privacy</a></label>
+              <div class="error-message" id="listener-terms-error"></div>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="newsletter" />
+              <label for="newsletter">Sign me up for the newsletter</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Join AmpliTune</button>
+          </form>
+          <div class="form-footer">
+            <p>Already have an account? <a href="login.html">Log in here</a></p>
+            <p>Looking to register as an artist? <a href="artist-signup.html">Sign up here</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="functions/index.js"></script>
+
+  <script>
+    document.getElementById('listener-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const fullName = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('listener-email').value.trim();
+      const password = document.getElementById('listener-password').value;
+      const genres = Array.from(document.querySelectorAll('input[name="genres[]"]:checked')).map(g => g.value);
+      const listeningHabits = document.getElementById('listening-habits').value;
+      const termsAccepted = document.getElementById('listener-terms').checked;
+      const newsletter = document.getElementById('newsletter').checked;
+
+      // Validate again (redundant if already handled)
+      if (!username || !fullName || !email || !password || genres.length === 0 || !listeningHabits || !termsAccepted) {
+        alert('Please fill in all required fields correctly.');
+        return;
+      }
+
+      const newUser = {
+        username,
+        fullName,
+        email,
+        password,
+        genres,
+        listeningHabits,
+        newsletter,
+        role: "listener"
+      };
+
+      let users = JSON.parse(localStorage.getItem('amplituneUsers') || '[]');
+      const userExists = users.find(u => u.username === username || u.email === email);
+
+      if (userExists) {
+        alert('Username or email already exists.');
+        return;
+      }
+
+      users.push(newUser);
+      localStorage.setItem('amplituneUsers', JSON.stringify(users));
+
+      alert('Registration successful! You can now log in.');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

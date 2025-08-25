@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | AmpliTune</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="body-container">
+        <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+    </div>
+    <div class="content">
+        <nav id="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="listener-homepage.html">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#whats-new">Explore</a></li>
+                    <li><a href="#whats-up">Following</a></li>
+                    <li>
+                        <a href="user-profile.html" class="icon-link" title="Profile">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </a>
+                    </li>
+                    <li class="settings-dropdown">
+                        <div class="settings-icon icon-link" tabindex="0">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <div class="dropdown-menu" aria-hidden="true">
+                            <a href="listener-settings.html">Profile Settings</a>
+                            <button type="button" class="logout-btn" id="logoutButton">Logout</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section id="profile-header">
+            <div class="container">
+                <div class="profile-header-content">
+                    <div class="profile-image">
+                        <img src="https://ui-avatars.com/api/?name=User+Name&background=311B92&color=fff&size=200" alt="Profile Image">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name-section">
+                            <h1>User Name</h1>
+                        </div>
+                        <p class="profile-username">@username</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number">243</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat">
+                                <span class="stat-number">150</span>
+                                <span class="stat-label">Following</span>
+                            </div>
+                        </div>
+                        <p class="profile-bio">User bio goes here...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile-content">
+            <div class="container">
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="favorites">Favorite Posts</button>
+                    <button class="tab-btn" data-tab="artists">Following Artists</button>
+                    <button class="tab-btn" data-tab="followers">Followers</button>
+                    <button class="tab-btn" data-tab="activity">Recent Activity</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="favorites">
+                        <!-- Sample favorite posts here -->
+                    </div>
+                    <div class="tab-pane" id="artists">
+                        <!-- Sample following artists here -->
+                    </div>
+                    <div class="tab-pane" id="followers">
+                        <!-- Sample followers list here -->
+                    </div>
+                    <div class="tab-pane" id="activity">
+                        <!-- Sample activity feed here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer" style="margin: 0;">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo">
+                    <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h4 class="footer-heading">Want to know more?</h4>
+                <ul class="footer-links">
+                    <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                    <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Copyright Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+
+         // In the JavaScript section
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                window.location.href = 'logout.html';
+            });
+        }
+    </script>
+</body>
+</html>

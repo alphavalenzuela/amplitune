@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings - AmpliTune</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/user-settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .alert {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .alert-error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .password-input-wrapper {
+            position: relative;
+        }
+
+        .password-input-wrapper .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="body-container">
+        <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+    </div>
+
+    <div class="content">
+
+        <!-- Navigation Bar -->
+        <nav id="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="listener-homepage.html">Ampli<span class="gradient-text">Tune</span></a>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="listener-homepage.html">Home</a></li>
+                <li><a href="#whats-new">Explore</a></li>
+                <li><a href="#whats-up">Following</a></li>
+
+                <!-- Profile Icon -->
+                <li>
+                    <a href="user-profile.html" class="icon-link" title="Profile">
+                    <i class="fa-solid fa-user-circle"></i>
+                    </a>
+                </li>
+
+                <!-- Settings Dropdown -->
+                <li class="settings-dropdown">
+                    <div class="settings-icon icon-link" tabindex="0">
+                    <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div class="dropdown-menu" aria-hidden="true">
+                    <a href="user-settings.html">Profile Settings</a>
+                    <button type="button" class="logout-btn" id="logoutButton">Logout</button>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        </nav>
+
+        <div class="settings-container">
+            <div class="settings-header">
+                <h1>Account Settings</h1>
+                <p>Manage your AmpliTune experience</p>
+            </div>
+
+            <nav class="settings-nav">
+                <ul class="settings-nav-list">
+                    <li class="settings-nav-item active" data-section="profile">Profile</li>
+                    <li class="settings-nav-item" data-section="privacy">Privacy</li>
+                    <li class="settings-nav-item" data-section="notifications">Notifications</li>
+                    <li class="settings-nav-item" data-section="preferences">Preferences</li>
+                </ul>
+            </nav>
+
+            <form action="update-settings.html" method="POST" enctype="multipart/form-data">
+                <!-- Profile Section -->
+                <section id="profile" class="settings-section">
+                    <h2>Profile Information</h2>
+                    <div class="form-group">
+                        <label for="display_name">Display Name</label>
+                        <input type="text" id="display_name" name="display_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" >
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" >
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" name="bio"></textarea>
+                    </div>
+                </section>
+
+                <!-- Privacy Section -->
+                <section id="privacy" class="settings-section" style="display: none;">
+                    <h2>Privacy Settings</h2>
+                    <div class="form-group">
+                        <label for="privacy_level">Profile Visibility</label>
+                        <select id="privacy_level" name="privacy_level">
+                            <option value="public">Public</option>
+                            <option value="followers">Followers Only</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" name="public_profile">
+                            <span class="toggle-label">Allow others to find my profile</span>
+                        </label>
+                    </div>
+
+                    <div class="password-section">
+                        <h3>Password Management</h3>
+                        <form id="password-form" method="POST" action="update-password.html" onsubmit="return validatePasswordForm()">
+                            <div class="form-group password-field">
+                                <label for="current_password">Current Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="current_password" name="current_password" placeholder="Enter your current password" required>
+                                    <i class="fas fa-eye toggle-password" data-target="current_password"></i>
+                                </div>
+                            </div>
+                            <div class="form-group password-field">
+                                <label for="new_password">New Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="new_password" name="new_password" placeholder="Enter new password" required>
+                                    <i class="fas fa-eye toggle-password" data-target="new_password"></i>
+                                </div>
+                            </div>
+                            <div class="form-group password-field">
+                                <label for="confirm_password">Confirm New Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm new password" required>
+                                    <i class="fas fa-eye toggle-password" data-target="confirm_password"></i>
+                                </div>
+                            </div>
+                            <input type="hidden" name="update_password" value="1">
+                            <button type="submit" class="save-button">Update Password</button>
+                            <div id="password-form-message"></div>
+                        </form>
+                        <div class="password-requirements">
+                            <p>Password must contain:</p>
+                            <ul>
+                                <li>At least 8 characters</li>
+                                <li>One uppercase letter</li>
+                                <li>One lowercase letter</li>
+                                <li>One number</li>
+                                <li>One special character</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notifications Section -->
+                <section id="notifications" class="settings-section" style="display: none;">
+                    <h2>Notification Preferences</h2>
+                    <div class="form-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" name="notifications_enabled" >
+                            <span class="toggle-label">Enable notifications</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" name="newsletter_signup">
+                            <span class="toggle-label">Subscribe to newsletter</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Preferences Section -->
+                <section id="preferences" class="settings-section" style="display: none;">
+                    <h2>App Preferences</h2>
+                    <div class="form-group">
+                        <label for="theme">Theme</label>
+                        <select id="theme" name="theme">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="toggle-switch">
+                            <input type="checkbox" name="autoplay">
+                            <span class="toggle-label">Enable autoplay</span>
+                        </label>
+                    </div>
+                </section>
+
+                <button type="submit" class="save-button">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="functions/index.js"></script>
+
+
+    <script>
+        document.querySelectorAll('.settings-nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Update active state
+                document.querySelectorAll('.settings-nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Show selected section
+                const sectionId = item.dataset.section;
+                document.querySelectorAll('.settings-section').forEach(section => {
+                    section.style.display = section.id === sectionId ? 'block' : 'none';
+                });
+            });
+        });
+
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const target = this.dataset.target;
+                const passwordInput = document.getElementById(target);
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        function validatePasswordForm() {
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            if (newPassword !== confirmPassword) {
+                alert("New password and confirm password do not match.");
+                return false;
+            }
+
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+            if (!passwordRegex.test(newPassword)) {
+                alert("Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.");
+                return false;
+            }
+
+            return true;
+        }
+
+         // In the JavaScript section
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                window.location.href = 'logout.html';
+            });
+        }
+        
+    </script>
+</body>
+</html>

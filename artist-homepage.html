@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amplitune - Artist Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <!-- Font Awesome & Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/artist-homepage.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <!-- <link rel="stylesheet" href="styles/footer.css"> -->
+</head>
+<body style="padding-top:50px;">
+    <div class="body-container bg-gradient">
+        <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+    </div>
+    <div class="content">
+        <nav id="navbar">
+            <div class="container">
+                <div class="logo" style="display: inline-block;">
+                    <a href="#" style="display: inline-block;">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#feed-section">Feed</a></li>
+                    <li><a href="artist-newpost.html" class="nav-button post-button">Create New Post</a></li>
+
+                    <!-- Profile Icon -->
+                    <li>
+                        <a href="artist-profile.html" class="icon-link" title="Profile">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </a>
+                    </li>
+
+                    <!-- Settings Dropdown -->
+                    <li class="settings-dropdown">
+                        <div class="settings-icon icon-link" tabindex="0">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <div class="dropdown-menu" aria-hidden="true">
+                            <a href="artist-settings.html">Profile Settings</a>
+                            <!-- Alternative if you prefer form submission -->
+                            <button type="button" class="logout-btn" id="logoutButton">Logout</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="profile-section" style="display: flex; align-items: flex-end;">
+                    <div class="profile-img">
+                        <img src="https://images.genius.com/0a6cb542d402c2efd5200589b63d9fa4.554x554x1.jpg" alt="Tothapi">
+                    </div>
+                    
+                    <div class="profile-info">
+                        <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+                            <h1>Tothapi</h1>
+                            <p style="color: rgba(255,255,255,0.8);">R&B / Soul Artist • Manila, Philippines</p>
+                            
+                            <div class="stats">
+                                <span class="stat-item"><i class="fa-solid fa-headphones"></i> 24,548 views</span>
+                                <span class="stat-item"><i class="fa-solid fa-user-group"></i> 3,275 followers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="container">
+            <!-- Music Showcase Section -->
+            <section class="music-showcase">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Music Showcase</h2>
+                    <!-- <a href="artist-showcase.php" class="section-link" style="color: white;">View All <i class="fas fa-chevron-right"></i></a> -->
+                </div>
+                
+                <div class="music-cards">
+                    <div class="music-card">
+                        <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747683593/panata_wdkipx.jpg" alt="Panata">
+                        <div class="card-info">
+                            <h3>
+                                Panata
+                                <span class="tag">TOP</span>
+                            </h3>
+                            <p>Single Release</p>
+                            
+                            <div class="metric">
+                                <i class="fas fa-search"></i>
+                                12,548 searches
+                            </div>
+                            
+                            <!-- <a href="analytics.php" 
+                               class="view-analytics-link">
+                                View Analytics
+                                <i class="fas fa-arrow-right"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                    
+                    <div class="music-card">
+                        <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357554/tot6_py2rzy.jpg" alt="Soul Searching">
+                        <div class="card-info">
+                            <h3>
+                                Celeste
+                                <span class="tag">HIT</span>
+                            </h3>
+                            <p>Album Track</p>
+                            
+                            <div class="metric">
+                                <i class="fas fa-headphones"></i>
+                                8,742 streams
+                            </div>
+                            
+                            <!-- <a href="track-details.php" 
+                               class="view-details-link">
+                                View Details
+                                <i class="fas fa-arrow-right"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                    
+                    <div class="music-card">
+                        <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357661/tot8_lg0ob3.jpg" alt="Midnight Drive">
+                        <div class="card-info">
+                            <h3>
+                                Celeste
+                                <span class="tag youtube">YOUTUBE</span>
+                            </h3>
+                            <p>Music Video</p>
+                            
+                            <div class="metric">
+                                <i class="fas fa-mouse-pointer"></i>
+                                5,321 clicks
+                            </div>
+                            
+                            <!-- <a href="https://youtube.com/watch?v=0aNLFlFFKpw" 
+                               class="view-details-link"
+                               target="_blank" rel="noopener noreferrer">
+                                Watch Video
+                                <i class="fas fa-external-link-alt"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                    
+                    <div class="music-card">
+                        <img src="https://images.genius.com/0a6cb542d402c2efd5200589b63d9fa4.554x554x1.jpg" alt="Album Announcement">
+                        <div class="card-info">
+                            <h3>
+                                Album Announcement
+                                <span class="tag social">SOCIAL</span>
+                            </h3>
+                            <p>Instagram Post</p>
+                            
+                            <div class="metric">
+                                <i class="fas fa-heart"></i>
+                                2,459 engagements
+                            </div>
+                            
+                            <!-- <a href="post-details.php" 
+                               class="view-details-link">
+                                View Post
+                                <i class="fas fa-arrow-right"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Overview Section -->
+            <section id="analytics" style="scroll-margin-top: 50px;">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Your Analytics</h2>
+                </div>
+                
+                <div class="analytics-grid">
+                    <!-- Total Plays Card -->
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h4>Total Plays</h4>
+                            <div class="analytics-card-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="metric">245,782</div>
+                        <div class="change positive">
+                                <i class="fas fa-arrow-up"></i>
+                            12% from last month
+                        </div>
+                    </div>
+                    
+                    <!-- Followers Card -->
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h4>Followers</h4>
+                            <div class="analytics-card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="metric">32,759</div>
+                        <div class="change positive">
+                                <i class="fas fa-arrow-up"></i>
+                            8% from last month
+                        </div>
+                    </div>
+                    
+                    <!-- Track Likes Card -->
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h4>Track Likes</h4>
+                            <div class="analytics-card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="metric">18,642</div>
+                        <div class="change positive">
+                                <i class="fas fa-arrow-up"></i>
+                            15% from last month
+                        </div>
+                    </div>
+                    
+                    <!-- Avg. Completion Card -->
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h4>Avg. Completion</h4>
+                            <div class="analytics-card-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
+                        <div class="metric">78%</div>
+                        <div class="change positive">
+                                <i class="fas fa-arrow-up"></i>
+                            5% from last month
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Insights Section -->
+            <section class="insights-section" style="padding:0">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Performance Insights</h2>
+                    
+                    <div class="timeframe-controls">
+                        <button class="timeframe-btn" data-timeframe="week">This Week</button>
+                        <button class="timeframe-btn active" data-timeframe="month">This Month</button>
+                        <button class="timeframe-btn" data-timeframe="year">This Year</button>
+                    </div>
+                </div>
+                
+                <div class="insights-grid">
+                    <!-- Audience Demographics Card -->
+                    <div class="insights-card">
+                        <h3>Audience Demographics</h3>
+                        
+                        <!-- Age Groups -->
+                        <div class="data-section">
+                            <h4>Age Groups</h4>
+                            <div id="age-groups-container">
+                                <div class="progress-item">
+                                    <span class="progress-label">18-24</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 65%"></div>
+                                    </div>
+                                    <span class="progress-value">65%</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">25-34</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 25%"></div>
+                                    </div>
+                                    <span class="progress-value">25%</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">13-17</span>
+                                    <div class="progress-bar-container">
+                                        <div class="progress-bar" style="width: 10%"></div>
+                                    </div>
+                                    <span class="progress-value">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gender Distribution -->
+                        <div class="data-section">
+                            <h4>Gender</h4>
+                            <div class="gender-distribution" id="gender-container">
+                                <div class="gender-item">
+                                    <div class="percentage">58%</div>
+                                    <div class="label">Female</div>
+                                </div>
+                                <div class="gender-item">
+                                    <div class="percentage">38%</div>
+                                    <div class="label">Male</div>
+                                </div>
+                                <div class="gender-item">
+                                    <div class="percentage">4%</div>
+                                    <div class="label">Other</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Geographical Reach Card -->
+                    <div class="insights-card">
+                        <h3>Geographical Reach</h3>
+                        
+                        <div class="data-section">
+                            <h4>Top Locations</h4>
+                            <div id="locations-container">
+                                <div class="country-item">
+                                    <div class="country-name">
+                                        <div class="country-icon">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <span>Metro Manila</span>
+                                    </div>
+                                    <div class="country-progress">
+                                        <span class="country-percentage">60%</span>
+                                        <div class="country-bar-container">
+                                            <div class="country-bar" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="country-item">
+                                    <div class="country-name">
+                                        <div class="country-icon">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <span>Quezon City</span>
+                                    </div>
+                                    <div class="country-progress">
+                                        <span class="country-percentage">20%</span>
+                                        <div class="country-bar-container">
+                                            <div class="country-bar" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="country-item">
+                                    <div class="country-name">
+                                        <div class="country-icon">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <span>Cebu City</span>
+                                    </div>
+                                    <div class="country-progress">
+                                        <span class="country-percentage">10%</span>
+                                        <div class="country-bar-container">
+                                            <div class="country-bar" style="width: 10%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="country-item">
+                                    <div class="country-name">
+                                        <div class="country-icon">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <span>Davao City</span>
+                                    </div>
+                                    <div class="country-progress">
+                                        <span class="country-percentage">5%</span>
+                                        <div class="country-bar-container">
+                                            <div class="country-bar" style="width: 5%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="country-item">
+                                    <div class="country-name">
+                                        <div class="country-icon">
+                                            <i class="fas fa-flag"></i>
+                                        </div>
+                                        <span>Baguio City</span>
+                                    </div>
+                                    <div class="country-progress">
+                                        <span class="country-percentage">3%</span>
+                                        <div class="country-bar-container">
+                                            <div class="country-bar" style="width: 3%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Releases Section -->
+            <section id="releases-section" style="padding:0">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Recent Releases</h2>
+                </div>
+                
+                <div class="releases-grid">
+                    <div class="release-card">
+                        <div class="release-card-image">
+                            <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357554/tot6_py2rzy.jpg" alt="Celeste">
+                            <div class="release-date-badge">June 13, 2024</div>
+                        </div>
+                        <div class="release-card-content">
+                            <h3 class="release-card-title">Celeste</h3>
+                            
+                            <div class="release-stats">
+                                <div class="release-stats-item">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>8,742 views</span>
+                                </div>
+                                <div class="release-stats-item">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <span>18,642</span>
+                                </div>
+                            </div>
+                            
+                            <div class="release-card-actions">
+                                <button class="release-card-action-btn">
+                                    <i class="fas fa-chart-line"></i>
+                                    Analytics
+                                </button>
+                                <button class="release-card-action-btn primary">
+                                    <i class="fas fa-share-alt"></i>
+                                    Promote
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="release-card">
+                        <div class="release-card-image">
+                            <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747683593/panata_wdkipx.jpg" alt="Soul Searching">
+                            <div class="release-date-badge">March 5, 2024</div>
+                        </div>
+                        <div class="release-card-content">
+                            <h3 class="release-card-title">Panata</h3>
+                            
+                            <div class="release-stats">
+                                <div class="release-stats-item">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>10,542 views</span>
+                                </div>
+                                <div class="release-stats-item">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <span>12,459</span>
+                                </div>
+                            </div>
+                            
+                            <div class="release-card-actions">
+                                <button class="release-card-action-btn">
+                                    <i class="fas fa-chart-line"></i>
+                                    Analytics
+                                </button>
+                                <button class="release-card-action-btn primary">
+                                    <i class="fas fa-share-alt"></i>
+                                    Promote
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="release-card">
+                        <div class="release-card-image">
+                            <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747683588/kutsinta_p6fmle.jpg" alt="Midnight Drive">
+                            <div class="release-date-badge">November 24, 2023</div>
+                        </div>
+                        <div class="release-card-content">
+                            <h3 class="release-card-title">Kutsinta</h3>
+                            
+                            <div class="release-stats">
+                                <div class="release-stats-item">
+                                    <i class="fa-solid fa-eye"></i>
+                                    <span>2,890 views</span>
+                                </div>
+                                <div class="release-stats-item">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <span>782</span>
+                                </div>
+                            </div>
+                            
+                            <div class="release-card-actions">
+                                <button class="release-card-action-btn">
+                                    <i class="fas fa-chart-line"></i>
+                                    Analytics
+                                </button>
+                                <button class="release-card-action-btn primary">
+                                    <i class="fas fa-share-alt"></i>
+                                    Promote
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Events Section -->
+            <section id="events" style="scroll-margin-top: 50px;">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <a href="artist-mgevents.html" class="section-link" style="color: white;">Manage Events <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-img-container">
+                            <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739899/tothapi_post3_iqxokv.jpg" alt="Takeover with Us">
+                            <div class="event-date">April 30, 2025</div>
+                            <div class="event-status status-active">
+                                Active
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Takeover with Us</h3>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Takeover Lounge Bar, The Pop Up Katipunan, Quezon City</span>
+                            </div>
+                            <div class="ticket-info">
+                                <div class="ticket-header">
+                                    <span>Tickets Sold</span>
+                                    <span>120/200</span>
+                                </div>
+                                <div class="ticket-progress-container">
+                                    <div class="ticket-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <a href="artist-mgevents.html" class="event-link">
+                                Event Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>  
+                    
+                    <div class="event-card">
+                        <div class="event-img-container">
+                            <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739900/tothapi_post4_vakn8w.jpg" alt="NakakaLocal Culture Fest">
+                            <div class="event-date">May 15, 2025</div>
+                            <div class="event-status status-active">
+                                Active
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3>NakakaLocal Culture Fest</h3>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Ayala Malls Manila Bay, Parañaque City</span>
+                            </div>
+                            <div class="ticket-info">
+                                <div class="ticket-header">
+                                    <span>Tickets Sold</span>
+                                    <span>85/150</span>
+                                </div>
+                                <div class="ticket-progress-container">
+                                    <div class="ticket-progress" style="width: 56%"></div>
+                                </div>
+                            </div>
+                            <a href="artist-mgevents.html" class="event-link">
+                                Event Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-img-container">
+                            <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739899/tothapi_post2_tajpci.jpg" alt="Live at Kai Bar">
+                            <div class="event-date">June 5, 2025</div>
+                            <div class="event-status status-draft">
+                                Draft
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3>Live at Kai Bar</h3>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kai Bar, Makati City</span>
+                            </div>
+                            <div class="ticket-info">
+                                <div class="ticket-header">
+                                    <span>Tickets Sold</span>
+                                    <span>0/100</span>
+                                </div>
+                                <div class="ticket-progress-container">
+                                    <div class="ticket-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <a href="artist-mgevents.html" class="event-link">
+                                Event Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Artist Feed Section -->
+            <section id="feed-section" style="scroll-margin-top: 50px;">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Your Feed</h2>
+                    <a href="artist-all-posts.html" class="section-link" style="color: white;">View All <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <div class="post" data-post-title="🌻 &quot;damdamin!&quot; out now! 🌻"
+                  data-post-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747738311/damdamin_jlkaco.jpg"
+                  data-post-artist="Syd Hartha"
+                  data-post-date="November 24, 2023"
+                  data-full-post-text="si &quot;damdamin!&quot; ay isang kantang tungkol sa ligaya at pagmamahal, sa paglimot sa mga takot, at pagtanggap sa sarili. Isang paglalakbay na sumasalamin sa karanasan ng maraming kabataang Pilipino ngayon. Sa bawat nota, binibigyang-buhay ni Syd Hartha ang bawat damdamin, na nagpapakita ng kanyang kahusayan sa pagsulat ng musika.">
+                  <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747738311/damdamin_jlkaco.jpg" alt="🌻 'damdamin!' out now! 🌻" class="post-img">
+                  <div class="post-content">
+                      <div class="post-header">
+                          <h3 class="post-title">🌻 "damdamin!" out now! 🌻</h3>
+                          <span class="post-tag">New Post</span>
+                      </div>
+                      <p class="post-meta">Syd Hartha - November 24, 2023</p>
+                      <p class="post-text">si "damdamin!" ay isang kantang tungkol sa ligaya at pagmamahal...</p>
+                      <div class="post-footer">
+                          <a href="#" class="post-link open-post-modal">Read more</a> <div class="post-stats">
+                              <span class="post-stat">
+                                  <i class="fa-regular fa-heart"></i> 243
+                              </span>
+                              <span class="post-stat share-button" data-url="URL_HERE">
+                                  <i class="bi bi-share"></i> 44
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="post" data-post-title="New look and releases single &apos;Small Talk&apos;"
+                  data-post-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747753753/one-click-straight_cfeipt.jpg"
+                  data-post-artist="One Click Straight"
+                  data-post-date="December 3, 2023"
+                  data-full-post-text="'Small Talk' is about the frequent situation you find yourself in when you're talking to the person you want to get to know. It's depicts the desperation a person is willing to go through for a glimpse of something more," the band says about the track, which follows the release of 'Pati Ba Pintig ng Puso?,' a collaboration between One Click Straight and the legendary rap icon, Gloc-9.">
+                  <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747753753/one-click-straight_cfeipt.jpg" alt="New Sticker Designs!" class="post-img">
+                  <div class="post-content">
+                      <div class="post-header">
+                          <h3 class="post-title">New look and releases single "Small Talk"</h3>
+                          <span class="post-tag">New Post</span>
+                      </div>
+                      <p class="post-meta">One Click Straight - December 3, 2023</p>
+                      <p class="post-text">'Small Talk' is about the frequent situation you find yourself in when you're talking to the person you want to get to know. It's depicts the desperation a person is willing to go through for a glimpse of something more," the band says about the track...</p>
+                      <div class="post-footer">
+                          <a href="#" class="post-link open-post-modal">Read more</a>
+                          <div class="post-stats">
+                              <span class="post-stat">
+                                  <i class="fa-regular fa-heart"></i> 157
+                              </span>
+                              <span class="post-stat share-button" data-url="URL_HERE">
+                                  <i class="bi bi-share"></i> 24
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="post" data-post-title="Announces single called 'Cvnty'"
+                  data-post-image="https://i.scdn.co/image/ab67616d0000b273ba1213f07eb87fe245a85f01"
+                  data-post-artist="Stef Aranas"
+                  data-post-date="June 13, 2024"
+                  data-full-post-text="The song 'Cvnty' is about empowering queer people, especially femmes, and embracing femininity. I want my music to empower my listeners, particularly with this release. The song aims to celebrate femininity in all shapes and forms, especially within the queer community. It's a very personal song, reflecting my identity as a queer femme artist, and I hope it resonates with others in their journey of self-acceptance and empowerment.">
+                  <img src="https://i.scdn.co/image/ab67616d0000b273ba1213f07eb87fe245a85f01" alt="Cvnty - Stef Aranas " class="post-img">
+                  <div class="post-content">
+                      <div class="post-header">
+                          <h3 class="post-title">Announces single called 'Cvnty'</h3>
+                          <span class="post-tag">New Post</span>
+                      </div>
+                      <p class="post-meta">Stef Aranas - June 13, 2024</p>
+                      <p class="post-text">The song "Cvnty" is about empowering queer people, especially femmes, and embracing femininity. I want my music to empower my listeners, particularly with this release. The song aims to celebrate femininity in all shapes and forms, especially within the queer community....</p>
+                      <div class="post-footer">
+                          <a href="#" class="post-link open-post-modal">Read More</a>
+                          <div class="post-stats">
+                              <span class="post-stat">
+                                  <i class="fa-regular fa-heart"></i> 429
+                              </span>
+                              <span class="post-stat share-button" data-url="URL_HERE">
+                                  <i class="bi bi-share"></i> 34
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </section>
+            
+            <!-- Content Management Section -->
+            <section class="cms-section" id="cms-section" style="scroll-margin-top: 50px;">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Your Posts</h2>
+                </div>
+
+                <div class="post">
+                    <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739899/tothapi_post3_iqxokv.jpg" alt="" class="post-img">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <h3 class="post-title">
+                                🔥 Don't miss out! TAKEOVER WITH US!
+                            </h3>
+                            <span class="content-time">2 hours ago</span>
+                        </div>
+                        <p class="post-meta">Tothapi - April 27, 2025</p>
+                        <p class="post-text">
+                                📅 April 30| Wednesday
+                                💸 Door Charge ₱300
+                                🕛 Doors open at 7pm - shows start at 9pm <br>
+                                📍 Location: Takeover Lounge Bar, The Pop Up Katipunan, Quezon City
+                        </p>
+                        <div class="post-footer">
+                            <div class="engagement">
+                                <span><i class="fas fa-heart"></i> 243</span>
+                                <span><i class="fa-solid fa-share-from-square"></i> 44</span>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn" title="Edit Post">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" title="Delete Post">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739899/tothapi_post2_tajpci.jpg" alt="New Sticker Designs!" class="post-img">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <h3 class="post-title">TOTHAPI Live Performance at Kai Bar</h3>
+                            <span class="content-time">1 day ago</span>
+                        </div>
+                            <p class="post-meta">Tothapi - May 3, 2023</p>
+                            <p class="post-text">Good morning! Mamaya na po ito 🙂</p>
+                        <div class="post-footer">
+                            <div class="engagement">
+                                <span><i class="fas fa-heart"></i> 157</span>
+                                <span><i class="fa-solid fa-share-from-square"></i> 24</span>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739900/tothapi_post4_vakn8w.jpg" alt="Cvnty - Stef Aranas " class="post-img">
+                    <div class="post-content">
+                        <div class="post-header">
+                            <h3 class="post-title">EXPERIENCE REAL LOVE IN EVERY NOTE 🎼</h3>
+                            <span class="content-time">3 days ago</span>
+                        </div>
+                        <p class="post-meta">Tothapi - April 14, 2024</p>
+                        <p class="post-text">OPM band Tothapi is here to redefine love one heartfelt song at a time at the #NakakaLocal Culture Fest Himig at Tinig!</p>
+                        <div class="post-footer">
+                            <div class="engagement">
+                                <span><i class="fas fa-heart"></i> 429</span>
+                                <span><i class="fa-solid fa-share-from-square"></i> 34</span>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="logo">
+                        <a href="index.html" style="display: inline-block;">Ampli<span class="gradient-text">Tune</span></a>
+                    </div>
+                    <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" onclick="shareSocial('facebook')">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" onclick="shareSocial('twitter')">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" onclick="shareSocial('instagram')">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <h4 class="footer-heading">Want to know more?</h4>
+                    <ul class="footer-links">
+                        <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                        <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright Info</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <div id="postModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closePostModalBtn">×</span>
+                <div class="modal-body post-modal-body">
+                    <img id="modalPostImage" src="" alt="Post Image" class="modal-post-img">
+                    <div class="modal-text-content">
+                        <h2 id="modalPostTitle"></h2>
+                        <p id="modalPostMeta"></p>
+                        <p id="modalPostDescription"></p>
+
+                        <div class="full-listen-links">
+                        <p>Listen to the full song:</p>
+                        <div class="song-platforms" id="modalPlatformLinks">
+                            <a href="https://youtu.be/0aNLFlFFKpw?feature=shared" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                            <a href="https://open.spotify.com/track/06IkOr83qPqa3yYvrIjgxp?si=e74c7341b85741af" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="functions/artist-homepage.js"></script>
+    <script src="functions/index.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle mobile menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Share profile function
+        function shareProfile() {
+            const profileUrl = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Tothapi - Amplitune Artist Profile',
+                    url: profileUrl
+                }).catch(console.error);
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                navigator.clipboard.writeText(profileUrl).then(() => {
+                    alert('Profile URL copied to clipboard!');
+                }).catch(console.error);
+            }
+        }
+
+        // Share social media function
+        function shareSocial(platform) {
+            const profileUrl = window.location.href;
+            const shareText = 'Check out Tothapi on Amplitune!';
+            let shareUrl;
+
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(profileUrl)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(profileUrl)}`;
+                    break;
+                case 'instagram':
+                    // Instagram doesn't support direct sharing via URL
+                    alert('Please share this profile on Instagram manually!');
+                    return;
+            }
+
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+
+        // Add animation to cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.music-card, .analytics-card, .insights-card, .event-card');
+            
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, 100 * index);
+            });
+        });
+
+        // --- Post Modal Logic ---
+        const postModal = document.getElementById('postModal');
+        const closePostModalBtn = document.getElementById('closePostModalBtn');
+        const postModalContent = postModal.querySelector('.modal-content');
+
+        const modalPostImage = document.getElementById('modalPostImage');
+        const modalPostTitle = document.getElementById('modalPostTitle');
+        const modalPostMeta = document.getElementById('modalPostMeta');
+        const modalPostDescription = document.getElementById('modalPostDescription');
+
+        // Get all "Read more" links for posts
+        const openPostModalBtns = document.querySelectorAll('.open-post-modal');
+
+        openPostModalBtns.forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Get the parent post div
+                const postDiv = event.target.closest('.post');
+
+                // Populate modal content from data attributes
+                modalPostImage.src = postDiv.dataset.postImage;
+                modalPostTitle.textContent = postDiv.dataset.postTitle;
+                modalPostMeta.textContent = `${postDiv.dataset.postArtist} - ${postDiv.dataset.postDate}`;
+                modalPostDescription.textContent = postDiv.dataset.fullPostText; // Use the full text
+
+                // Show the modal
+                postModal.classList.add('is-visible');
+                postModalContent.classList.remove('closing');
+            });
+        });
+
+        // Close modal when close button is clicked
+        closePostModalBtn.addEventListener('click', () => {
+            closePostModal();
+        });
+
+        // Close modal when clicking outside of the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === postModal) {
+                closePostModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && postModal.classList.contains('is-visible')) {
+                closePostModal();
+            }
+        });
+
+        function closePostModal() {
+            postModalContent.classList.add('closing');
+            postModalContent.addEventListener('transitionend', handlePostTransitionEnd, { once: true });
+
+            function handlePostTransitionEnd() {
+                postModal.classList.remove('is-visible');
+                postModalContent.classList.remove('closing');
+                // Clear content after closing to prevent flicker on next open
+                modalPostImage.src = '';
+                modalPostTitle.textContent = '';
+                modalPostMeta.textContent = '';
+                modalPostDescription.textContent = '';
+            }
+        }
+
+        // In the JavaScript section
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => {
+                window.location.href = 'logout.html';
+            });
+        }
+    </script>
+</body>
+</html>

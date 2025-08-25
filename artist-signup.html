@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Registration | AmpliTune</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/artist-signup.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="body-container">
+        <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+    </div>
+
+    <div class="content">
+        <!-- Navigation Bar -->
+        <nav id="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#app-showcase">Features</a></li>
+                    <li><a href="login.html" class="nav-button signup-button">Log In</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Artist Signup Header -->
+        <section id="artist-header">
+            <div class="container">
+                <h1>Join Our Artist Community</h1>
+                <p>Share your music with an audience that appreciates your unique sound</p>
+            </div>
+        </section>
+
+        <!-- Artist Registration Form -->
+        <section id="artist-signup">
+            <div class="container">
+                <div class="registration-form">
+                    <h2>Create Your Artist Account</h2>
+                    
+                    <div id="error-message" class="error-message" style="margin-bottom: 20px; display: none;"></div>
+                    <div id="success-message" class="success-message" style="margin-bottom: 20px; display: none;"></div>
+                    
+                    <form id="artist-form" enctype="multipart/form-data">
+                        <!-- New username field -->
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Choose a unique username" required>
+                            <div class="error-message" id="username-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artist-name">Artist/Band Name</label>
+                            <input type="text" id="artist-name" name="artist-name" placeholder="Your performing name" required>
+                            <div class="error-message" id="artist-name-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-name">Contact Name</label>
+                            <input type="text" id="contact-name" name="contact-name" placeholder="Your full name" required>
+                            <div class="error-message" id="contact-name-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artist-email">Email Address</label>
+                            <input type="email" id="artist-email" name="artist-email" placeholder="you@example.com" required>
+                            <div class="error-message" id="artist-email-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="artist-password">Password</label>
+                            <input type="password" id="artist-password" name="artist-password" placeholder="Create a password" required>
+                            <div class="error-message" id="artist-password-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="genre">Primary Genre</label>
+                            <select id="genre" name="genre" required>
+                                <option value="" disabled selected>Select your main genre</option>
+                                <option value="pop">Pop</option>
+                                <option value="rock">Rock</option>
+                                <option value="hiphop">Hip Hop</option>
+                                <option value="rnb">R&B</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="classical">Classical</option>
+                                <option value="country">Country</option>
+                                <option value="folk">Folk</option>
+                                <option value="indie">Indie</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="error-message" id="genre-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bio">Artist Bio</label>
+                            <textarea id="bio" name="bio" placeholder="Tell us about your music and journey (max 300 characters)" maxlength="300"></textarea>
+                            <div class="char-count"><span id="bio-count">0</span>/300</div>
+                            <div class="error-message" id="bio-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Where can we find your music? (Select all that apply)</label>
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="spotify" name="platforms" value="spotify">
+                                    <label for="spotify">Spotify</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="apple" name="platforms" value="apple">
+                                    <label for="apple">Apple Music</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="soundcloud" name="platforms" value="soundcloud">
+                                    <label for="soundcloud">SoundCloud</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="youtube" name="platforms" value="youtube">
+                                    <label for="youtube">YouTube</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="bandcamp" name="platforms" value="bandcamp">
+                                    <label for="bandcamp">Bandcamp</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other" name="platforms" value="other">
+                                    <label for="other">Other</label>
+                                </div>
+                            </div>
+                            <div class="error-message" id="platforms-error"></div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="artist-terms" name="artist-terms" required>
+                            <label for="artist-terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Artist Agreement</a></label>
+                            <div class="error-message" id="artist-terms-error"></div>
+                        </div>
+                        
+                        <!-- File Upload for Music Sample -->
+                        <div class="form-group">
+                            <label for="sample-music">Upload Sample Music (MP3, WAV, or FLAC)</label>
+                            <div class="file-upload-container">
+                                <div class="file-upload-area" id="file-upload-area">
+                                    <img src="styles/rocket-upload.png" alt="Upload" class="upload-icon">
+                                    <p>Drag a file here, or</p>
+                                    <label for="sample-music" class="file-upload-button">Choose a file to upload</label>
+                                    <input type="file" id="sample-music" name="sample-music" accept=".mp3,.wav,.flac" class="file-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Register as an Artist</button>
+                    </form>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="login.html">Log in here</a></p>
+                        <p>Looking to register as a listener? <a href="listener-signup.html">Sign up here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="artist-faq">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I upload my music?</h3>
+                            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>After registration, you'll get access to our artist dashboard where you can upload your tracks, albums, and artwork. We support various file formats including WAV, FLAC, and MP3.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do I retain the rights to my music?</h3>
+                            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, absolutely. You retain 100% ownership of your music. AmpliTune receives a non-exclusive license to distribute your content on our platform only.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How long does the verification process take?</h3>
+                            <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>After you submit your registration, our team reviews the information to verify your artist status. This typically takes 1-3 business days, after which you'll receive full access to the artist portal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Subscription Plan Popup -->
+    <div id="subscription-popup" class="subscription-popup">
+        <div class="subscription-content">
+            <span class="close-popup">&times;</span>
+            <h2>Choose Your Plan</h2>
+            <div class="plans-container">
+                <div class="plan-card" data-plan="free">
+                    <h3>Free</h3>
+                    <div class="price">Free Trial<span> for 7 days</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Basic artist profile</li>
+                        <li><i class="fas fa-check"></i> Upload up to 5 songs</li>
+                        <li><i class="fas fa-check"></i> Basic analytics</li>
+                        <li><i class="fas fa-check"></i> Standard support</li>
+                    </ul>
+                    <button class="select-plan-btn" data-plan="free">Select Plan</button>
+                </div>
+                <div class="plan-card" data-plan="basic">
+                    <h3>Basic</h3>
+                    <div class="price">₱499<span>/month</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Everything in Free</li>
+                        <li><i class="fas fa-check"></i> Upload up to 50 tracks</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <button class="select-plan-btn" data-plan="basic">Select Plan</button>
+                </div>
+                <div class="plan-card premium" data-plan="premium">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Premium</h3>
+                    <div class="price">₱999<span>/month</span></div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Everything in Basic</li>
+                        <li><i class="fas fa-check"></i> Unlimited track uploads</li>
+                        <li><i class="fas fa-check"></i> Premium analytics</li>
+                        <li><i class="fas fa-check"></i> 24/7 priority support</li>
+                        <li><i class="fas fa-check"></i> Custom artist page</li>
+                    </ul>
+                    <button class="select-plan-btn" data-plan="premium">Select Plan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Form Popup -->
+    <div id="payment-popup" class="payment-popup">
+        <div class="payment-content">
+            <span class="close-payment">&times;</span>
+            <h2>Complete Your Payment</h2>
+            <div class="payment-details">
+                <div class="selected-plan-info">
+                    <h3>Selected Plan: <span id="selected-plan-name"></span></h3>
+                    <p class="plan-price">Amount: <span id="selected-plan-price"></span></p>
+                </div>
+                
+                <div class="payment-forms-container">
+                    <!-- Payment Methods -->
+                    <div class="payment-methods">
+                        <h3>Select Payment Method</h3>
+                        <div class="payment-options">
+                            <div class="payment-option" data-method="card">
+                                <input type="radio" id="card-payment" name="payment-method" value="card" checked>
+                                <label for="card-payment">
+                                    <div class="payment-logo">
+                                        <img src="https://logos-world.net/wp-content/uploads/2020/06/Visa-Logo-2006.png" alt="Visa" class="card-logo">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1200px-Mastercard-logo.svg.png" alt="Mastercard" class="card-logo">
+                                    </div>
+                                    <span>Credit/Debit Card</span>
+                                </label>
+                            </div>
+                            <div class="payment-option" data-method="gcash">
+                                <input type="radio" id="gcash-payment" name="payment-method" value="gcash">
+                                <label for="gcash-payment">
+                                    <div class="payment-logo">
+                                        <img src="https://logos-world.net/wp-content/uploads/2023/05/GCash-Logo.png" alt="GCash" class="payment-logo-img">
+                                    </div>
+                                    <span>GCash</span>
+                                </label>
+                            </div>
+                            <div class="payment-option" data-method="paymaya">
+                                <input type="radio" id="paymaya-payment" name="payment-method" value="paymaya">
+                                <label for="paymaya-payment">
+                                    <div class="payment-logo">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Maya_logo.svg/1200px-Maya_logo.svg.png" alt="PayMaya" class="payment-logo-img">
+                                    </div>
+                                    <span>Maya</span>
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="seabank" name="payment-method" value="seabank">
+                                <label for="seabank">
+                                    <div class="payment-logo">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/SeaBank.svg/2560px-SeaBank.svg.png" alt="SeaBank" class="payment-logo-img">
+                                    </div>
+                                    <span>SeaBank</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Payment Form -->
+                    <form id="payment-form" class="payment-form active">
+                        <div class="form-group">
+                            <label for="card-name">Name on Card</label>
+                            <input type="text" id="card-name" name="card-name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" name="card-number" required placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" name="expiry" required placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" required placeholder="123">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email for Receipt</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <button type="submit" class="pay-button">Pay Now</button>
+                    </form>
+
+                    <!-- GCash Form -->
+                    <form id="gcash-form" class="payment-form">
+                        <div class="form-group">
+                            <label for="gcash-number">GCash Number</label>
+                            <input type="text" id="gcash-number" name="gcash-number" required placeholder="09XX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="gcash-email">Email for Receipt</label>
+                            <input type="email" id="gcash-email" name="gcash-email" required placeholder="your@email.com">
+                        </div>
+                        <button type="submit" class="pay-button">Pay with GCash</button>
+                    </form>
+
+                    <!-- PayMaya Form -->
+                    <form id="paymaya-form" class="payment-form">
+                        <div class="form-group">
+                            <label for="paymaya-number">PayMaya Number</label>
+                            <input type="text" id="paymaya-number" name="paymaya-number" required placeholder="09XX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="paymaya-email">Email for Receipt</label>
+                            <input type="email" id="paymaya-email" name="paymaya-email" required placeholder="your@email.com">
+                        </div>
+                        <button type="submit" class="pay-button">Pay with PayMaya</button>
+                    </form>
+
+                    <!-- SeaBank Form -->
+                    <form id="seabank-form" class="payment-form">
+                        <div class="form-group">
+                            <label for="seabank-account">SeaBank Account Number</label>
+                            <input type="text" id="seabank-account" name="seabank-account" required placeholder="Enter your account number">
+                        </div>
+                        <div class="form-group">
+                            <label for="seabank-email">Email for Receipt</label>
+                            <input type="email" id="seabank-email" name="seabank-email" required placeholder="your@email.com">
+                        </div>
+                        <button type="submit" class="pay-button">Pay with SeaBank</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="functions/script.js"></script>
+    <script>
+        // Artist Registration Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Bio character counter
+            const bioTextarea = document.getElementById('bio');
+            const bioCount = document.getElementById('bio-count');
+            
+            bioTextarea.addEventListener('input', function() {
+                bioCount.textContent = this.value.length;
+            });
+            
+            // Form submission
+            const artistForm = document.getElementById('artist-form');
+            
+            artistForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Clear previous error messages
+                clearErrorMessages();
+                
+                // Validate form
+                if (validateForm()) {
+                    // Get form data
+                    const formData = {
+                        username: document.getElementById('username').value.trim(),
+                        artistName: document.getElementById('artist-name').value.trim(),
+                        contactName: document.getElementById('contact-name').value.trim(),
+                        email: document.getElementById('artist-email').value.trim(),
+                        password: document.getElementById('artist-password').value,
+                        genre: document.getElementById('genre').value,
+                        bio: document.getElementById('bio').value.trim(),
+                        platforms: getSelectedPlatforms(),
+                        terms: document.getElementById('artist-terms').checked,
+                        registrationDate: new Date().toISOString(),
+                        plan: 'free' // Default to free plan
+                    };
+                    
+                    // Check if username/email already exists
+                    if (isUserExists(formData.username, formData.email)) {
+                        showError('error-message', 'Username or email already exists. Please choose different ones.');
+                        return;
+                    }
+                    
+                    // Save to Local Storage
+                    saveArtistData(formData);
+                    
+                    // Show success message
+                    showSuccess('success-message', 'Registration successful! Redirecting to login...');
+                    
+                    // Clear form
+                    artistForm.reset();
+                    bioCount.textContent = '0';
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                }
+            });
+            
+            // Subscription popup handling
+            const subscriptionPopup = document.getElementById('subscription-popup');
+            const closePopup = document.querySelector('.close-popup');
+            const selectPlanButtons = document.querySelectorAll('.select-plan-btn');
+            
+            // Show subscription popup after form is successfully submitted
+            function showSubscriptionPopup() {
+                subscriptionPopup.style.display = 'block';
+            }
+            
+            closePopup.addEventListener('click', function() {
+                subscriptionPopup.style.display = 'none';
+            });
+            
+            selectPlanButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const plan = this.getAttribute('data-plan');
+                    // Store selected plan in session storage
+                    sessionStorage.setItem('selectedPlan', plan);
+                    // Close subscription popup
+                    subscriptionPopup.style.display = 'none';
+                    // Show payment popup
+                    showPaymentPopup(plan);
+                });
+            });
+            
+            // Payment popup handling
+            const paymentPopup = document.getElementById('payment-popup');
+            const closePayment = document.querySelector('.close-payment');
+            
+            function showPaymentPopup(plan) {
+                const planName = document.getElementById('selected-plan-name');
+                const planPrice = document.getElementById('selected-plan-price');
+                
+                // Set plan details
+                switch(plan) {
+                    case 'free':
+                        planName.textContent = 'Free Trial';
+                        planPrice.textContent = '₱0';
+                        break;
+                    case 'basic':
+                        planName.textContent = 'Basic Plan';
+                        planPrice.textContent = '₱499/month';
+                        break;
+                    case 'premium':
+                        planName.textContent = 'Premium Plan';
+                        planPrice.textContent = '₱999/month';
+                        break;
+                }
+                
+                paymentPopup.style.display = 'block';
+            }
+            
+            closePayment.addEventListener('click', function() {
+                paymentPopup.style.display = 'none';
+            });
+            
+            // Payment method switching
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const paymentForms = document.querySelectorAll('.payment-form');
+            
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const method = this.getAttribute('data-method');
+                    
+                    // Hide all forms
+                    paymentForms.forEach(form => {
+                        form.classList.remove('active');
+                    });
+                    
+                    // Show selected form
+                    document.getElementById(`${method}-form`).classList.add('active');
+                });
+            });
+            
+            // Handle payment form submissions
+            document.getElementById('payment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                completePayment('card');
+            });
+            
+            document.getElementById('gcash-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                completePayment('gcash');
+            });
+            
+            document.getElementById('paymaya-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                completePayment('paymaya');
+            });
+            
+            document.getElementById('seabank-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                completePayment('seabank');
+            });
+        });
+        
+        // Helper functions
+        function clearErrorMessages() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => {
+                msg.textContent = '';
+            });
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('error-message').textContent = '';
+        }
+        
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+        
+        function showSuccess(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+        
+        function validateForm() {
+            let isValid = true;
+            
+            // Validate username
+            const username = document.getElementById('username').value.trim();
+            if (username.length < 4) {
+                showError('username-error', 'Username must be at least 4 characters long');
+                isValid = false;
+            }
+            
+            // Validate artist name
+            const artistName = document.getElementById('artist-name').value.trim();
+            if (artistName.length < 2) {
+                showError('artist-name-error', 'Please enter a valid artist/band name');
+                isValid = false;
+            }
+            
+            // Validate contact name
+            const contactName = document.getElementById('contact-name').value.trim();
+            if (contactName.length < 2) {
+                showError('contact-name-error', 'Please enter your full name');
+                isValid = false;
+            }
+            
+            // Validate email
+            const email = document.getElementById('artist-email').value.trim();
+            if (!validateEmail(email)) {
+                showError('artist-email-error', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate password
+            const password = document.getElementById('artist-password').value;
+            if (password.length < 8) {
+                showError('artist-password-error', 'Password must be at least 8 characters long');
+                isValid = false;
+            }
+            
+            // Validate genre
+            const genre = document.getElementById('genre').value;
+            if (!genre) {
+                showError('genre-error', 'Please select your primary genre');
+                isValid = false;
+            }
+            
+            // Validate terms
+            const terms = document.getElementById('artist-terms').checked;
+            if (!terms) {
+                showError('artist-terms-error', 'You must agree to the terms and conditions');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function getSelectedPlatforms() {
+            const platforms = [];
+            document.querySelectorAll('input[name="platforms"]:checked').forEach(checkbox => {
+                platforms.push(checkbox.value);
+            });
+            return platforms;
+        }
+        
+        function isUserExists(username, email) {
+            const artists = JSON.parse(localStorage.getItem('artists')) || [];
+            return artists.some(artist => artist.username === username || artist.email === email);
+        }
+        
+        // Replace the saveArtistData function in artist-signup.html with this:
+        function saveArtistData(artistData) {
+            // Structure data to match login expectations
+            const userData = {
+                username: artistData.username,
+                email: artistData.email,
+                password: artistData.password,
+                role: 'artist', // Add role field
+                artistName: artistData.artistName,
+                contactName: artistData.contactName,
+                genre: artistData.genre,
+                bio: artistData.bio,
+                platforms: artistData.platforms,
+                registrationDate: artistData.registrationDate,
+                plan: artistData.plan
+            };
+
+            // Get existing users or create empty array
+            let users = JSON.parse(localStorage.getItem('amplituneUsers')) || [];
+            
+            // Add new user
+            users.push(userData);
+            
+            // Save back to localStorage
+            localStorage.setItem('amplituneUsers', JSON.stringify(users));
+            
+            // Also store in session storage for current session
+            sessionStorage.setItem('currentArtist', JSON.stringify(userData));
+        }
+        
+        function completePayment(method) {
+            // In a real app, you would process payment here
+            // For demo, we'll just store the payment method and mark as paid
+            
+            // Get current artist from session storage
+            const artistData = JSON.parse(sessionStorage.getItem('currentArtist'));
+            if (!artistData) {
+                alert('Error: Artist data not found. Please try registering again.');
+                return;
+            }
+            
+            // Update artist data with payment info
+            artistData.paymentMethod = method;
+            artistData.paymentDate = new Date().toISOString();
+            artistData.isPaid = true;
+            
+            // Update in local storage
+            let artists = JSON.parse(localStorage.getItem('artists')) || [];
+            const artistIndex = artists.findIndex(a => a.email === artistData.email);
+            if (artistIndex !== -1) {
+                artists[artistIndex] = artistData;
+                localStorage.setItem('artists', JSON.stringify(artists));
+            }
+            
+            // Update in session storage
+            sessionStorage.setItem('currentArtist', JSON.stringify(artistData));
+            
+            // Close payment popup
+            document.getElementById('payment-popup').style.display = 'none';
+            
+            // Show success message
+            alert('Payment successful! Your account is now active.');
+            
+            // Redirect to artist dashboard
+            window.location.href = 'artist-dashboard.html';
+        }
+    </script>
+</body>
+</html>

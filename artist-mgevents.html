@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Events - Amplitune</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background: #311B92;
+            --color-background-overlay: rgba(0, 0, 0, 0.2);
+            --color-text: #F8F9FA;
+            --color-text-secondary: rgba(248, 249, 250, 0.7);
+            --color-primary: #6200EA;
+            --color-secondary: #651FFF;
+            --color-accent: #D1C4E9;
+            --color-card-bg: rgba(18, 18, 18, 0.5);
+            --color-border: rgba(128, 128, 128, 0.1);
+            --color-surface: rgba(18, 18, 18, 0.6);
+            --transition-standard: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .body-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        }
+
+        .nav-button.post-button {
+        padding: 0.5rem 1rem;
+        background-color: var(--color-secondary);
+        color: var(--color-text);
+        border-radius: 50px;
+        }
+
+        .post-button {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .post-button:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .icon-link {
+            font-size: 1.25rem;
+            color: var(--color-text);
+            transition: var(--transition-standard);
+        }
+
+        .icon-link:hover {
+            color: var(--color-accent);
+            transform: scale(1.1);
+        }
+
+        .settings-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--color-border);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-standard);
+            z-index: 100;
+        }
+
+        .settings-dropdown:focus-within .dropdown-menu,
+        .settings-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition-standard);
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--color-text);
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Events management styles */
+        .events-management {
+            padding: 2rem 0;
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .events-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .create-event-btn {
+            background: var(--color-primary);
+            color: var(--color-text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .create-event-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .event-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-img-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .event-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover .event-img-container img {
+            transform: scale(1.05);
+        }
+
+        .event-date-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--color-text);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            z-index: 2;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: fit-content;
+            min-width: min-content;
+        }
+
+
+        .event-status {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            z-index: 2;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: fit-content;
+            min-width: min-content;
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .status-draft {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+
+        .event-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .event-location, .event-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-location i, .event-date i {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        .event-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-content h3 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.25rem;
+            color: var(--color-text);
+            line-height: 1.4;
+        }
+
+        .ticket-info {
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .ticket-progress-container {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .ticket-progress {
+            height: 100%;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .event-action-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .edit-btn {
+            background: rgba(98, 0, 234, 0.1);
+            color: var(--color-primary);
+        }
+
+        .edit-btn:hover {
+            background: rgba(98, 0, 234, 0.2);
+        }
+
+        .delete-btn {
+            background: rgba(255, 68, 68, 0.1);
+            color: #ff4444;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 68, 68, 0.2);
+        }
+
+        /* Modal styles */
+        .create-event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--color-background);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid var(--color-border);
+            max-height: 90vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .event-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: white;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: var(--color-background);
+            padding: 3rem 0 1rem;
+            margin-top: auto;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-left {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            text-align: left;
+        }
+
+        .footer-right {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            text-align: right;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            grid-row: 2 / 3;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-description {
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--color-card-bg);
+            color: var(--color-text);
+            transition: var(--transition-standard);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-text);
+            transform: translateY(-3px);
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--color-text);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-secondary);
+            transition: var(--transition-standard);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .footer-copyright {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--color-background);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                gap: 1rem;
+                clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+            }
+
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card {
+                max-width: 100%;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+
+            .footer-left,
+            .footer-right {
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+
+            .footer-right {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .events-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="body-container bg-gradient">
+        <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+    </div>
+    <div class="content">
+        <nav id="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="artist-homepage.html#events">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="artist-homepage.html">Home</a></li>
+                    <li><a href="artist-homepage.html#analytics">Analytics</a></li>
+                    <li><a href="artist-homepage.html#events">Events</a></li>
+                    <li><a href="artist-homepage.html#feed-section">Feed</a></li>
+                    <li><a href="artist-newpost.html" class="nav-button post-button">Create New Post</a></li>
+                    <li>
+                        <a href="artist-profile.html" class="icon-link" title="Profile">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </a>
+                    </li>
+                    <li class="settings-dropdown">
+                        <div class="settings-icon icon-link" tabindex="0">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <div class="dropdown-menu" aria-hidden="true">
+                            <a href="artist-settings.html">Profile Settings</a>
+                            <button type="button" class="logout-btn" id="logout-btn">Logout</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="container" style="padding-top: 80px;">
+            <section class="events-management">
+                <div class="events-header">
+                    <h2 class="section-title">Manage Events</h2>
+                    <button class="create-event-btn" id="createEventBtn">
+                        <i class="fas fa-plus"></i>
+                        Create New Event
+                    </button>
+                </div>
+
+                <div class="events-grid" id="eventsGrid">
+                    <!-- Events will be added here dynamically -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Create Event Modal -->
+        <div id="createEventModal" class="create-event-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Create New Event</h3>
+                    <button class="close-modal" id="closeModalBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="event-form" id="createEventForm">
+                    <div class="form-group">
+                        <label for="eventName">Event Name</label>
+                        <input type="text" id="eventName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Event Date</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventLocation">Location</label>
+                        <input type="text" id="eventLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventCapacity">Venue Capacity</label>
+                        <input type="number" id="eventCapacity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventImage">Event Image URL</label>
+                        <input type="url" id="eventImage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Create Event</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="logo">
+                        <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                    </div>
+                    <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <h4 class="footer-heading">Want to know more?</h4>
+                    <ul class="footer-links">
+                        <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                        <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright Info</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const navbar = document.getElementById('navbar');
+            const createEventBtn = document.getElementById('createEventBtn');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const createEventModal = document.getElementById('createEventModal');
+            const createEventForm = document.getElementById('createEventForm');
+            const eventsGrid = document.getElementById('eventsGrid');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            // Sample events data (would be replaced with localStorage in a real app)
+            let events = [
+                {
+                    id: '1',
+                    name: 'Takeover with Us',
+                    date: '2025-04-30',
+                    location: 'Takeover Lounge Bar, The Pop Up Katipunan, Quezon City',
+                    capacity: 200,
+                    tickets_sold: 120,
+                    image: 'https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739899/tothapi_post3_iqxokv.jpg',
+                    description: 'A night of indie music featuring up-and-coming artists from across the country.',
+                    status: 'active'
+                },
+                {
+                    id: '2',
+                    name: 'NakakaLocal Culture Fest',
+                    date: '2025-05-15',
+                    location: 'Ayala Malls Manila Bay, Parañaque City',
+                    capacity: 150,
+                    tickets_sold: 85,
+                    image: 'https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739900/tothapi_post4_vakn8w.jpg',
+                    description: 'Intimate acoustic performances in a cozy setting.',
+                    status: 'active'
+                },
+                {
+                    id: '3',
+                    name: 'Live at Kai Bar',
+                    date: '2025-06-05',
+                    location: 'Kai Bar, Makati City',
+                    capacity: 100,
+                    tickets_sold: 0,
+                    image: 'https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747739899/tothapi_post2_tajpci.jpg',
+                    description: 'Intimate acoustic performances in a cozy setting.',
+                    status: 'draft'
+                }
+            ];
+
+            // Initialize the page
+            function init() {
+                renderEvents();
+                setupEventListeners();
+            }
+
+            // Render events to the grid
+            function renderEvents() {
+                eventsGrid.innerHTML = '';
+                
+                events.forEach(event => {
+                    const eventCard = createEventCard(event);
+                    eventsGrid.appendChild(eventCard);
+                });
+            }
+
+            // Create an event card element
+            function createEventCard(event) {
+                const percentage = Math.round((event.tickets_sold / event.capacity) * 100);
+                const formattedDate = formatDate(event.date);
+                
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.innerHTML = `
+                    <div class="event-img-container">
+                        <img src="${event.image}" alt="${event.name}">
+                        <div class="event-status ${event.status === 'active' ? 'status-active' : 'status-draft'}">
+                            ${event.status.charAt(0).toUpperCase() + event.status.slice(1)}
+                        </div>
+                        <div class="event-date-badge">${formattedDate}</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>${event.name}</h3>
+                        <div class="event-info">
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${event.location}</span>
+                            </div>
+                            <div class="event-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>${formattedDate}</span>
+                            </div>
+                        </div>
+                        <div class="ticket-info">
+                            <div class="ticket-header">
+                                <span>Tickets Sold</span>
+                                <span>${event.tickets_sold}/${event.capacity}</span>
+                            </div>
+                            <div class="ticket-progress-container">
+                                <div class="ticket-progress" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                        <div class="event-actions">
+                            <button class="event-action-btn edit-btn" data-id="${event.id}">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </button>
+                            <button class="event-action-btn delete-btn" data-id="${event.id}">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                return card;
+            }
+
+            // Format date to readable format
+            function formatDate(dateString) {
+                const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                return new Date(dateString).toLocaleDateString('en-US', options);
+            }
+
+            // Setup event listeners
+            function setupEventListeners() {
+                // Mobile menu toggle
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+
+                // Navbar scroll effect
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 10) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+
+                // Create event modal
+                createEventBtn.addEventListener('click', openCreateEventModal);
+                closeModalBtn.addEventListener('click', closeCreateEventModal);
+
+                // Close modal when clicking outside
+                window.addEventListener('click', (e) => {
+                    if (e.target === createEventModal) {
+                        closeCreateEventModal();
+                    }
+                });
+
+                // Form submission
+                createEventForm.addEventListener('submit', handleCreateEvent);
+
+                // Logout button
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', handleLogout);
+                }
+
+                // Delegated event listeners for edit/delete buttons
+                eventsGrid.addEventListener('click', (e) => {
+                    const editBtn = e.target.closest('.edit-btn');
+                    const deleteBtn = e.target.closest('.delete-btn');
+                    
+                    if (editBtn) {
+                        const eventId = editBtn.getAttribute('data-id');
+                        editEvent(eventId);
+                    }
+                    
+                    if (deleteBtn) {
+                        const eventId = deleteBtn.getAttribute('data-id');
+                        deleteEvent(eventId);
+                    }
+                });
+            }
+
+            // Modal functions
+            function openCreateEventModal() {
+                createEventModal.style.display = 'block';
+            }
+
+            function closeCreateEventModal() {
+                createEventModal.style.display = 'none';
+                createEventForm.reset();
+            }
+
+            // Handle form submission
+            function handleCreateEvent(e) {
+                e.preventDefault();
+                
+                const newEvent = {
+                    id: Date.now().toString(),
+                    name: document.getElementById('eventName').value,
+                    date: document.getElementById('eventDate').value,
+                    location: document.getElementById('eventLocation').value,
+                    capacity: parseInt(document.getElementById('eventCapacity').value),
+                    tickets_sold: 0,
+                    image: document.getElementById('eventImage').value,
+                    description: document.getElementById('eventDescription').value,
+                    status: 'draft'
+                };
+                
+                // Add to events array
+                events.unshift(newEvent);
+                
+                // Re-render events
+                renderEvents();
+                
+                // Close modal and reset form
+                closeCreateEventModal();
+                
+                // Show success message
+                alert('Event created successfully!');
+            }
+
+            // Edit event
+            function editEvent(eventId) {
+                const event = events.find(e => e.id === eventId);
+                if (event) {
+                    alert(`Editing event: ${event.name}\n\nIn a real app, this would open an edit form.`);
+                }
+            }
+
+            // Delete event
+            function deleteEvent(eventId) {
+                if (confirm('Are you sure you want to delete this event?')) {
+                    events = events.filter(e => e.id !== eventId);
+                    renderEvents();
+                    alert('Event deleted successfully!');
+                }
+            }
+
+            // Logout handler
+            function handleLogout() {
+                // In a real app, you would clear the user session
+                alert('You have been logged out.');
+                window.location.href = 'login.html';
+            }
+
+            // Initialize the page
+            init();
+        });
+    </script>
+</body>
+</html>

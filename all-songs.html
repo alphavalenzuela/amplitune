@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Songs - Amplitune</title>
+  <link rel="stylesheet" href="styles/listener-homepage.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Additional styles specific to the song list page */
+    .song-list-container {
+      padding: 2rem 0;
+      padding-top: 100px;
+    }
+    
+    .page-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .playlist-section {
+      margin-top: 3rem;
+    }
+    
+    .playlist-title {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Each card takes up the full width, stacking vertically */
+      gap: 1.5rem; /* Space between each stacked card */
+    }
+    
+    .playlist-card {
+      background-color: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: var(--transition-standard);
+      display: flex; /* Makes image and content align horizontally */
+      align-items: flex-start; /* Aligns content to the top */
+      padding: 1.5rem; /* Add padding to the card itself */
+      gap: 1rem; /* Space between image and text content */
+    }
+    
+    .playlist-img {
+      width: 150px; /* Adjust image width as desired */
+      height: 150px; /* Make image square */
+      border-radius: var(--border-radius); /* Apply border-radius to the image */
+      object-fit: cover;
+      flex-shrink: 0; /* Prevent image from shrinking */
+    }
+    
+    .playlist-content {
+      flex-grow: 1; /* Allows text content to take up available space */
+      padding: 0; /* Remove existing padding as it's now on the card */
+      display: flex; /* Use flexbox for internal content as well */
+      flex-direction: column; /* Stack name, desc, and platforms vertically */
+    }
+    
+    .playlist-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .playlist-desc {
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      margin-bottom: 2.5rem; /* Space between description and platforms */
+    }
+ 
+    /* Ensure platform icons are styled correctly within the new layout */
+    .playlist-content .song-platforms {
+      display: flex;
+      gap: 10px;
+      margin-top: auto; /* Pushes the platforms to the bottom if content is shorter */
+    }
+ 
+    .playlist-content .platform-icon {
+      font-size: 1.3em;
+      color: var(--color-text-secondary);
+      transition: color 0.3s ease;
+    }
+ 
+    .playlist-content .fa-youtube:hover {
+      color: #FF0000;
+    }
+ 
+    .playlist-content .fa-spotify:hover {
+      color: #1DB954;
+    }
+
+    /* Custom Audio Player Container */
+    .custom-audio-player-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background-color: var(--color-card-bg); /* Or a slightly different shade */
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      margin-top: 1rem; /* Space from description/button */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      width: 100%; /* Ensure it spans the card width */
+    }
+
+    /* Controls Wrapper (holds buttons, progress, time, volume) */
+    .controls-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Play/Pause Button */
+    .play-pause-btn {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+      border: none;
+      border-radius: 50%; /* Make it round */
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      flex-shrink: 0; /* Prevent shrinking */
+    }
+
+    .play-pause-btn:hover {
+      background-color: var(--color-primary);
+      transform: scale(1.05);
+    }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      flex-grow: 1; /* Allows it to take available space */
+      height: 8px;
+      background-color: var(--color-border); /* Background of the bar */
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden; /* Ensures progress bar stays within bounds */
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%; /* Will be controlled by JS */
+      background-color: var(--color-secondary); /* Fill color */
+      border-radius: 4px;
+      transition: width 0.1s linear; /* Smooth progress update */
+    }
+
+    /* Time Display */
+    .time-display {
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      font-family: 'Inter', sans-serif;
+      flex-shrink: 0;
+      width: 85px; /* Give it a fixed width to prevent jumpiness */
+      text-align: right;
+    }
+
+    /* Volume Controls */
+    .volume-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      width: 100px; /* Adjust width as needed */
+    }
+
+    .volume-icon {
+      color: var(--color-text-secondary);
+      font-size: 1.1rem;
+    }
+
+    .volume-slider {
+      -webkit-appearance: none; /* Remove default browser styling for range input */
+      width: 100%;
+      height: 4px;
+      background: var(--color-border);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .volume-slider::-webkit-slider-thumb:hover {
+      background: var(--color-primary);
+    }
+
+    /* General hidden class */
+    .hidden {
+      display: none !important;
+    }
+
+    /* Responsive adjustments for audio player */
+    @media (max-width: 576px) {
+      .controls-wrapper {
+        flex-wrap: wrap; /* Allow controls to wrap on small screens */
+        justify-content: center;
+      }
+      .progress-bar-container {
+        order: 1; /* Place progress bar above other controls */
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      .play-pause-btn {
+        order: 2;
+      }
+      .volume-container {
+        order: 3;
+        width: auto; /* Let it shrink if necessary */
+      }
+      .time-display {
+        order: 4;
+        width: auto;
+        text-align: center;
+      }
+    }
+
+    /* Styles for the Listen Preview button */
+    .listen-preview-btn {
+      background-color: var(--color-secondary); /* Your primary accent color */
+      color: var(--color-white);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      margin-top: 0.5rem; /* Space above the button */
+    }
+
+    .listen-preview-btn:hover {
+      background-color: var(--color-primary); /* A slightly darker shade for hover */
+    }
+
+    /* Class to hide elements */
+    .hidden {
+      display: none !important; /* Use !important to ensure it overrides other display properties */
+    }
+
+    /* Full Listen Links Section */
+    .full-listen-links {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border); /* Separator line */
+      text-align: center; /* Center the "Listen to the full song" text */
+    }
+
+    .full-listen-links p {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Ensure platform icons inside full-listen-links are styled correctly */
+    .full-listen-links .song-platforms {
+      display: flex;
+      justify-content: center; /* Center icons */
+      gap: 15px; /* Adjust spacing between icons */
+    }
+    
+    @media (max-width: 768px) {
+      .song-table th:nth-child(3),
+      .song-table td:nth-child(3) {
+        display: none;
+      }
+      .playlist-card {
+        flex-direction: column; /* Stack image and content vertically on smaller screens */
+        align-items: center; /* Center items when stacked vertically */
+        text-align: center;
+      }
+      .playlist-img {
+        margin-bottom: 1rem; /* Space between image and text when stacked */
+      }
+      .playlist-content .song-platforms {
+        justify-content: center; /* Center icons when stacked vertically */
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .song-table th:nth-child(4),
+      .song-table td:nth-child(4) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="body-container">
+    <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+  </div>
+
+  <div class="content">
+    <nav id="navbar">
+      <div class="container">
+          <div class="logo">
+              <a href="listener-homepage.html#whats-new">Ampli<span class="gradient-text">Tune</span></a>
+          </div>
+          <div class="menu-toggle" id="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+              <li><a href="listener-homepage.html">Home</a></li>
+              <li><a href="listener-homepage.html#whats-new">Explore Music</a></li>
+              <li><a href="listener-homepage.html#whos-new">Explore Artists</a></li>
+              <li><a href="listener-homepage.html#whats-up">Feed</a></li>
+
+              <li>
+                <a href="user-profile.html" class="icon-link" title="Profile">
+                  <i class="fa-solid fa-user-circle"></i>
+                </a>
+              </li>
+
+              <li class="settings-dropdown">
+                <div class="settings-icon icon-link" tabindex="0">
+                  <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="dropdown-menu" aria-hidden="true">
+                  <a href="user-settings.html">Profile Settings</a>
+                  <form method="POST" action="logout.html" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                  </form>
+                </div>
+              </li>
+
+          </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="song-list-container">
+        <div class="page-header">
+          <h1>Featured Songs</h1>
+        </div>
+        
+        <div class="playlist-section">
+          <p class="playlist-title">Discover the latest releases and indie classics from the Philippines' growing music scene.</p>
+          <div class="playlist-grid">
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://i.ytimg.com/vi/1AAyuUbzDuY/maxresdefault.jpg" alt="Featured1" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Sa Bawat Sandali" - Amie Sol</h3>
+                  <p class="playlist-desc">This song captures the longing and warmth of cherishing every fleeting moment with a loved one.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Sa Bawat Sandali - Amiel Sol-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/0aNLFlFFKpw?feature=shared" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/06IkOr83qPqa3yYvrIjgxp?si=e74c7341b85741af" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
+              </div>
+            </a>
+            
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b27374209d8afe08af7e5b1fdbc3" alt="Featured3" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Pag Ibig ng Ikaw at Ako" - Earl Agustin</h3>
+                  <p class="playlist-desc">A heartfelt ballad that explores a unique and incomparable love between two individuals, emphasizing themes of trust, acceptance, and emotional depth.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Pag-ibig ng Ikaw at Ako - Earl Agustin-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/v4QFXeE_8-8?si=wpSx2ePOrWxU8AUe" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://i.ytimg.com/vi/dsXDlAtQUic/maxresdefault.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Sickreet" - Ryannah J</h3>
+                  <p class="playlist-desc">A reflection on the emotional toll of keeping a passionate love hidden, expressing the desire to break free from secrecy and embrace authenticity.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Ryannah J - Sickreet-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/h3onzzItusE?si=tUSkSwuWBNyL-4tx" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://cdn-images.dzcdn.net/images/cover/5bd0acdc83abfbd8bdc25dc6683a04e1/500x500.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Marilag" - Dionela</h3>
+                  <p class="playlist-desc">A a poetic and metaphorical expression of love and admiration.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Dionela - Marilag-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/vXXW_1NUpYo?feature=shared" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/2zbq6eS68i4NIJWekIuW1s?si=eccb51ade90d4657" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://i.scdn.co/image/ab67616d00001e02a081ecee7aaff1c678fb78a2" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"damdamin!" - Syd Hartha</h3>
+                  <p class="playlist-desc">Si "damdamin!" ay isang kantang tungkol sa ligaya at pagmamahal.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/syd hartha - damdamin! [Official Music Video]-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/MMW-S76YGBw?feature=shared" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/6nrGNaUnAtLTbXMW4k9kKE?si=1a4d1fd511ae4f72" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684649/telepono_izyct3.png" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Telepono" - One Click Straight</h3>
+                  <p class="playlist-desc">A song about late-night phone calls might seem cheesy, but the sentiment behind it is deeply heartfelt.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/ONE CLICK STRAIGHT - Telepono (Official Music Video)-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/sPvuG5h_1Hc?si=GETP12v5oKD6C8U5" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/77KJXJXoaBc1xHDiENrm71?si=2a0e76eff0cd4a7b" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684648/binibini_ufnalc.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Binibini" - Zach Tabudlo</h3>
+                  <p class="playlist-desc">The song is about a mutual connection between two people who are romantically swept away with each other but are “waiting for the right moment to say what they feel”.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Zack Tabudlo - Binibini-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://www.youtube.com/watch?v=YOUR_BINIBINI_YOUTUBE_LINK" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_BINIBINI_SPOTIFY_LINK" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684647/pagtingin_sxm86w.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Pagtingin" - Ben&Ben</h3>
+                  <p class="playlist-desc">The song explores the complexities of love and relationships, specifically the hesitation and uncertainty that can arise when confessing feelings.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Ben&Ben - Pagtingin-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/P5ktQh3sWZk?si=aEzg65Rpzb4mEkY0" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_PAGTINGIN_SPOTIFY_LINK" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684647/hanggang-sa-huli_dcvmfh.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Hanggang sa Huli" - SB19</h3>
+                  <p class="playlist-desc">A song that speaks about the depth of love and commitment in a relationship.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Hanggang Sa Huli - SB19-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/S82NKEOVj50?si=d4Zb6zTSksaTA1_d" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684647/kahit-kunwari_fkl5cc.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Kahit Kunwari" - Tj Monterde</h3>
+                  <p class="playlist-desc">Ang kanta na ito ay para sa mga taong one sided love o sa mga taong sila lamang ang nagmamahal sa taong mahal nila at hindi sila kayang mahalin pabalik.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Kahit kunwari - TJ Monterde-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/ycTPy0MK6DY?si=YqBtplBZqrW8M7eZ" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684647/sigurado_sy1kxq.jpg" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Sigurado" - Zach Tabudlo</h3>
+                  <p class="playlist-desc">The song is built around the idea of finding peace and stability in a relationship, even amidst life's uncertainties.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Zack Tabudlo - Sigurado-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/BdZegTipksw?si=pnoYg_8JxX4ZcMFi" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="card-link">
+              <div class="playlist-card">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684648/ang-wakas_g9qgpx.png" alt="Featured4" class="playlist-img">
+                <div class="playlist-content">
+                  <h3 class="playlist-name">"Ang Wakas" - Arthur Miguel ft. Trisha Macapagal</h3>
+                  <p class="playlist-desc">Ang wakas is a song about pagsuko.</p>
+                  <p>
+                    Listen preview:
+                    <button class="listen-preview-btn">Play Preview</button>
+                  </p>
+
+                  <div class="custom-audio-player-container hidden"> 
+                    <audio class="audio-element" src="audios/Arthur Miguel ft. Trisha Macapagal - Ang Wakas-[Trimmed by Rev.com].mp3"></audio> 
+                    <div class="controls-wrapper">
+                      <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                      <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                      </div>
+                      <span class="time-display">0:00 / 0:00</span>
+                      <div class="volume-container">
+                        <i class="fas fa-volume-up volume-icon"></i>
+                        <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                      </div>
+                    </div>
+
+                    <div class="full-listen-links">
+                      <p>Listen to the full song:</p>
+                      <div class="song-platforms">
+                        <a href="https://youtu.be/gY91e0G3GVo?si=b2nm-DpIxlkyyGkH" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                        <a href="https://open.spotify.com/track/YOUR_SPOTIFY_TRACK_ID" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo">
+                    <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h4 class="footer-heading">Want to know more?</h4>
+                <ul class="footer-links">
+                    <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                    <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Copyright Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Amplitune. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+  </div>
+
+  <script src="functions/index.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Settings dropdown functionality
+    const settingsIcon = document.querySelector('.settings-icon');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (settingsIcon && dropdownMenu) {
+        settingsIcon.addEventListener('click', () => {
+            const isExpanded = settingsIcon.getAttribute('aria-expanded') === 'true';
+            settingsIcon.setAttribute('aria-expanded', !isExpanded);
+            dropdownMenu.setAttribute('aria-hidden', isExpanded);
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!settingsIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                settingsIcon.setAttribute('aria-expanded', 'false');
+                dropdownMenu.setAttribute('aria-hidden', 'true');
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    }
+
+    // --- New JavaScript for Listen Preview buttons ---
+    const listenPreviewButtons = document.querySelectorAll('.listen-preview-btn');
+
+    listenPreviewButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default button behavior (e.g., form submission)
+
+            const playlistContent = button.closest('.playlist-content');
+            const audioPlayer = playlistContent.querySelector('.audio-player');
+
+            if (audioPlayer) {
+                // Toggle the 'hidden' class
+                audioPlayer.classList.toggle('hidden');
+
+                // Change button text based on visibility
+                if (audioPlayer.classList.contains('hidden')) {
+                    button.textContent = 'Play Preview';
+                    audioPlayer.pause(); // Pause audio if hiding
+                    audioPlayer.currentTime = 0; // Reset audio to start
+                } else {
+                    button.textContent = 'Hide Preview';
+                    audioPlayer.play(); // Auto-play when shown (optional, consider user preference)
+                }
+            }
+        });
+    });
+    // --- End of new JavaScript ---
+});
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
+    // Settings dropdown functionality
+    const settingsIcon = document.querySelector('.settings-icon');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (settingsIcon && dropdownMenu) {
+        settingsIcon.addEventListener('click', () => {
+            const isExpanded = settingsIcon.getAttribute('aria-expanded') === 'true';
+            settingsIcon.setAttribute('aria-expanded', !isExpanded);
+            dropdownMenu.setAttribute('aria-hidden', isExpanded);
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!settingsIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                settingsIcon.setAttribute('aria-expanded', 'false');
+                dropdownMenu.setAttribute('aria-hidden', 'true');
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    }
+
+    // --- Custom Audio Player Logic ---
+    const listenPreviewButtons = document.querySelectorAll('.listen-preview-btn');
+
+    listenPreviewButtons.forEach(button => {
+        const playlistContent = button.closest('.playlist-content');
+        const audioPlayerContainer = playlistContent.querySelector('.custom-audio-player-container');
+        const audio = audioPlayerContainer.querySelector('.audio-element');
+        const playPauseBtn = audioPlayerContainer.querySelector('.play-pause-btn');
+        const progressBar = audioPlayerContainer.querySelector('.progress-bar');
+        const progressBarContainer = audioPlayerContainer.querySelector('.progress-bar-container');
+        const timeDisplay = audioPlayerContainer.querySelector('.time-display');
+        const volumeSlider = audioPlayerContainer.querySelector('.volume-slider');
+        const volumeIcon = audioPlayerContainer.querySelector('.volume-icon');
+
+        // Function to format time for display
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        // Toggle visibility of the custom audio player container
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            // Pause any other currently playing audio first
+            document.querySelectorAll('audio').forEach(otherAudio => {
+                if (otherAudio !== audio && !otherAudio.paused) {
+                    otherAudio.pause();
+                    const otherPlayerContainer = otherAudio.closest('.custom-audio-player-container');
+                    if(otherPlayerContainer) {
+                        otherPlayerContainer.classList.add('hidden');
+                        const otherPlayPauseBtn = otherPlayerContainer.querySelector('.play-pause-btn');
+                        if (otherPlayPauseBtn) {
+                            otherPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Reset icon
+                            otherPlayerContainer.closest('.playlist-content').querySelector('.listen-preview-btn').textContent = 'Play Preview';
+                        }
+                    }
+                }
+            });
+
+
+            audioPlayerContainer.classList.toggle('hidden');
+
+            if (!audioPlayerContainer.classList.contains('hidden')) {
+                // If showing, play the audio and update button text
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                button.textContent = 'Hide Preview';
+            } else {
+                // If hiding, pause and reset audio, update button text
+                audio.pause();
+                audio.currentTime = 0;
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                button.textContent = 'Play Preview';
+            }
+        });
+
+        // Play/Pause Button functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                // Pause any other currently playing audio first
+                document.querySelectorAll('audio').forEach(otherAudio => {
+                    if (otherAudio !== audio && !otherAudio.paused) {
+                        otherAudio.pause();
+                        const otherPlayerContainer = otherAudio.closest('.custom-audio-player-container');
+                        if(otherPlayerContainer) {
+                            const otherPlayPauseBtn = otherPlayerContainer.querySelector('.play-pause-btn');
+                            if (otherPlayPauseBtn) {
+                                otherPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Reset icon
+                            }
+                        }
+                    }
+                });
+
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+
+        // Update progress bar and time display as audio plays
+        audio.addEventListener('timeupdate', () => {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        });
+
+        // When audio ends
+        audio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            progressBar.style.width = '0%'; // Reset progress bar
+            timeDisplay.textContent = `0:00 / ${formatTime(audio.duration)}`; // Reset time
+            audio.currentTime = 0; // Reset current time to 0
+        });
+
+        // Seek functionality (click on progress bar)
+        progressBarContainer.addEventListener('click', (e) => {
+            const clickX = e.offsetX; // X position of the click relative to the container
+            const width = progressBarContainer.offsetWidth; // Total width of the container
+            audio.currentTime = (clickX / width) * audio.duration;
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', () => {
+            audio.volume = volumeSlider.value;
+            // Update volume icon based on volume level
+            if (audio.volume === 0) {
+                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
+                volumeIcon.classList.add('fa-volume-mute');
+            } else if (audio.volume < 0.5) {
+                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-mute');
+                volumeIcon.classList.add('fa-volume-down');
+            } else {
+                volumeIcon.classList.remove('fa-volume-down', 'fa-volume-mute');
+                volumeIcon.classList.add('fa-volume-up');
+            }
+        });
+
+        // Initialize volume icon and time display on metadata load
+        audio.addEventListener('loadedmetadata', () => {
+            timeDisplay.textContent = `0:00 / ${formatTime(audio.duration)}`;
+            audio.volume = volumeSlider.value; // Set initial volume
+        });
+    });
+    // --- End Custom Audio Player Logic ---
+});
+  </script>
+</body>
+</html>

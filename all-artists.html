@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Artists - Amplitune</title>
+  <link rel="stylesheet" href="styles/listener-homepage.css">
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Additional styles specific to the artists page */
+    .artists-container {
+      padding: 2rem 0;
+      padding-top: 100px;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      margin-right: 1rem;
+      color: var(--color-text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition-standard);
+    }
+
+    .back-button:hover {
+      color: var(--color-secondary);
+    }
+
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .artist-card {
+      text-align: center;
+      transition: var(--transition-standard);
+    }
+
+    .artist-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .artist-img-container {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      background-color: var(--color-card-bg);
+      border: 3px solid var(--color-secondary);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: var(--transition-standard);
+    }
+
+    .artist-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .artist-card:hover .artist-img {
+      transform: scale(1.1);
+    }
+
+    .artist-name {
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .artist-genre {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .artist-info {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .artist-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .filter-section {
+      margin-bottom: 2rem;
+    }
+
+    .filter-title {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .filter-tag {
+      background-color: var(--color-card-bg);
+      color: var(--color-text);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition-standard);
+    }
+
+    .filter-tag:hover, .filter-tag.active {
+      background-color: var(--color-secondary);
+    }
+
+    .featured-section {
+      margin-top: 4rem;
+    }
+
+    .featured-artists {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .featured-artist {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      background-color: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      transition: var(--transition-standard);
+    }
+
+    .featured-artist:hover {
+      transform: translateY(-5px);
+      background-color: var(--hover-bg);
+    }
+
+    .featured-artist-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-secondary);
+    }
+
+    .featured-artist-info {
+      flex: 1;
+    }
+
+    .featured-artist-name {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .featured-artist-genre {
+      color: var(--color-text-secondary);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .featured-artist-stats {
+      display: flex;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .artist-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      }
+
+      .featured-artists {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .artist-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .artist-img-container {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="body-container">
+    <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+  </div>
+  <div class="content">
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+      <div class="container">
+          <div class="logo">
+              <a href="listener-homepage.html#whos-new">Ampli<span class="gradient-text">Tune</span></a>
+          </div>
+          <div class="menu-toggle" id="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+              <li><a href="listener-homepage.html#whos-new">Home</a></li>
+              <li><a href="listener-homepage.html#whats-new">Explore Music</a></li>
+              <li><a href="listener-homepage.html#whos-new">Explore Artists</a></li>
+              <li><a href="listener-homepage.html#whats-up">Feed</a></li>
+
+              <!-- Profile Icon -->
+              <li>
+                <a href="user-profile.html" class="icon-link" title="Profile">
+                  <i class="fa-solid fa-user-circle"></i>
+                </a>
+              </li>
+
+              <!-- Settings Dropdown -->
+              <li class="settings-dropdown">
+                <div class="settings-icon icon-link" tabindex="0">
+                  <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="dropdown-menu" aria-hidden="true">
+                  <a href="user-settings.html">Profile Settings</a>
+                  <form method="POST" action="logout.html" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                  </form>
+                </div>
+              </li>
+
+          </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="artists-container">
+        <div class="page-header">
+          <h1>All Artists</h1>
+        </div>
+
+        <p>Discover new and emerging artists from the Philippines' vibrant music scene.</p>
+
+        <div class="filter-section">
+          <h3 class="filter-title">Filter by Genre</h3>
+          <div class="filter-tags">
+            <div class="filter-tag active" data-genre="all">All Genres</div>
+            <div class="filter-tag" data-genre="OPM">OPM</div>
+            <div class="filter-tag" data-genre="P-Pop">P-Pop</div>
+            <div class="filter-tag" data-genre="Indie Pop">Indie Pop</div>
+            <div class="filter-tag" data-genre="Indie Rock">Indie Rock</div>
+            <div class="filter-tag" data-genre="Folk Pop">Folk Pop</div>
+            <div class="filter-tag" data-genre="R&B / Soul">R&B / Soul</div>
+            <div class="filter-tag" data-genre="Hip-Hop">Hip-Hop</div>
+          </div>
+        </div>
+
+        <div class="artist-grid">
+          <a href="#" class="artist-link" data-genre="P-Pop">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748428/BTY_Beauty-and-BINI_cover-image-1_isxpts.jpg" alt="Bini" class="artist-img">
+              </div>
+              <h3 class="artist-name">Bini</h3>
+              <p class="artist-genre">P-Pop</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="P-Pop">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748620/MERec0f27b3f4f2aa7d233bfc0a32243_wyat1116-1365x2048_h7tegp.jpg" alt="SB19" class="artist-img">
+              </div>
+              <h3 class="artist-name">SB19</h3>
+              <p class="artist-genre">P-Pop</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="Folk Pop">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748849/content_rsz_ben_ben_2021_apr_a_roema9.jpg" alt="Ben&Ben" class="artist-img">
+              </div>
+              <h3 class="artist-name">Ben&Ben</h3>
+              <p class="artist-genre">Folk Pop</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="Indie Rock">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748931/500x500-000000-80-0-0_rzfvae.jpg" alt="Lola Amour" class="artist-img">
+              </div>
+              <h3 class="artist-name">Lola Amour</h3>
+              <p class="artist-genre">Indie Rock</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="Indie Pop">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749062/UDD-1-v1_xbizl1.jpg" alt="UDD" class="artist-img">
+              </div>
+              <h3 class="artist-name">UDD</h3>
+              <p class="artist-genre">Indie Pop</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="OPM">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749246/latest_vykcnh.jpg" alt="Moira Dela Torre" class="artist-img">
+              </div>
+              <h3 class="artist-name">Moira Dela Torre</h3>
+              <p class="artist-genre">OPM</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="R&B / Soul">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749341/KZ-Tandingan-Artist-Photo-2023-for-new-website_o3xfia.jpg" alt="KZ Tandingan" class="artist-img">
+              </div>
+              <h3 class="artist-name">KZ Tandingan</h3>
+              <p class="artist-genre">R&B / Soul</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link" data-genre="Hip-Hop">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749616/flow-g_bewyrs.jpg" alt="Flow G" class="artist-img">
+              </div>
+              <h3 class="artist-name">Flow G</h3>
+              <p class="artist-genre">Hip-Hop</p>
+            </div>
+          </a>
+
+          <!-- Additional artists that are hidden by default -->
+          <a href="#" class="artist-link extra" data-genre="P-Pop" style="display: none;">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749808/nowayman-2_solnqx.jpg" alt="MNL48" class="artist-img">
+              </div>
+              <h3 class="artist-name">MNL48</h3>
+              <p class="artist-genre">P-Pop</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link extra" data-genre="OPM" style="display: none;">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749862/Zack-Tabudlo-PR-Photo-2_pq1x9n.jpg" alt="Zack Tabudlo" class="artist-img">
+              </div>
+              <h3 class="artist-name">Zack Tabudlo</h3>
+              <p class="artist-genre">OPM</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link extra" data-genre="Folk Pop" style="display: none;">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749896/ab6761610000e5eb0a0eabc1dd41d11425c288b1_vbt6nu.jpg" alt="Munimuni" class="artist-img">
+              </div>
+              <h3 class="artist-name">Munimuni</h3>
+              <p class="artist-genre">Folk Pop</p>
+            </div>
+          </a>
+
+          <a href="#" class="artist-link extra" data-genre="Indie Rock" style="display: none;">
+            <div class="artist-card">
+              <div class="artist-img-container">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749933/01.2-e1717090949270-962x1024_mwqjj0.jpg" alt="Carousel Casualties" class="artist-img">
+              </div>
+              <h3 class="artist-name">Carousel Casualties</h3>
+              <p class="artist-genre">Indie Rock</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="featured-section">
+          <h2 class="section-title">Featured Artists</h2>
+          <div class="featured-artists">
+            <a href="#" class="featured-artist-link" data-genre="Folk Pop">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748849/content_rsz_ben_ben_2021_apr_a_roema9.jpg" alt="Ben&Ben" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">Ben&Ben</h3>
+                  <p class="featured-artist-genre">Folk Pop</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 35 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 2.4M
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="featured-artist-link" data-genre="Indie Rock">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748931/500x500-000000-80-0-0_rzfvae.jpg" alt="Lola Amour" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">Lola Amour</h3>
+                  <p class="featured-artist-genre">Indie Rock</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 18 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 675K
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="featured-artist-link" data-genre="Indie Pop">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749062/UDD-1-v1_xbizl1.jpg" alt="UDD" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">UDD</h3>
+                  <p class="featured-artist-genre">Indie Pop</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 26 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 820K
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="featured-artist-link" data-genre="P-Pop">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747748620/MERec0f27b3f4f2aa7d233bfc0a32243_wyat1116-1365x2048_h7tegp.jpg" alt="SB19" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">SB19</h3>
+                  <p class="featured-artist-genre">P-Pop</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 22 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 1.8M
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="featured-artist-link" data-genre="OPM">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749246/latest_vykcnh.jpg" alt="Moira Dela Torre" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">Moira Dela Torre</h3>
+                  <p class="featured-artist-genre">OPM</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 42 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 3.1M
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="featured-artist-link" data-genre="R&B / Soul">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749341/KZ-Tandingan-Artist-Photo-2023-for-new-website_o3xfia.jpg" alt="KZ Tandingan" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">KZ Tandingan</h3>
+                  <p class="featured-artist-genre">R&B / Soul</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 28 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 1.2M
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="featured-artist-link" data-genre="Hip-Hop">
+              <div class="featured-artist">
+                <img src="https://res.cloudinary.com/dxkeh8toc/image/upload/v1747749616/flow-g_bewyrs.jpg" alt="Flow G" class="featured-artist-img">
+                <div class="featured-artist-info">
+                  <h3 class="featured-artist-name">Flow G</h3>
+                  <p class="featured-artist-genre">Hip-Hop</p>
+                  <div class="featured-artist-stats">
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-music"></i> 31 songs
+                    </span>
+                    <span class="artist-stat">
+                      <i class="fa-solid fa-users"></i> 950K
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+  <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo">
+                    <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h4 class="footer-heading">Want to know more?</h4>
+                <ul class="footer-links">
+                    <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                    <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Copyright Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+  </div>
+
+  <script src="functions/index.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterTags = document.querySelectorAll('.filter-tag');
+      const artistCards = document.querySelectorAll('.artist-link');
+      const featuredArtistCards = document.querySelectorAll('.featured-artist-link');
+      const featuredSection = document.querySelector('.featured-section');
+
+      // Function to filter artists
+      function filterArtists(genre) {
+        // First hide all artists
+        artistCards.forEach(card => {
+          card.style.display = 'none';
+        });
+
+        // Hide all featured artists initially
+        featuredArtistCards.forEach(card => {
+          card.style.display = 'none';
+        });
+        
+        // Featured section is always visible now
+        featuredSection.style.display = 'block';
+
+        let artistCount = 0;
+        let featuredCount = 0;
+
+        if (genre === 'all') {
+          // Show maximum 8 artists from any genre
+          artistCards.forEach(card => {
+            if (artistCount < 8) {
+              card.style.display = '';
+              artistCount++;
+            }
+          });
+
+          // Show exactly 3 featured artists
+          featuredArtistCards.forEach(card => {
+            if (featuredCount < 3) {
+              card.style.display = '';
+              featuredCount++;
+            }
+          });
+        } else {
+          // Show up to 8 artists of the selected genre
+          artistCards.forEach(card => {
+            if (card.getAttribute('data-genre') === genre && artistCount < 8) {
+              card.style.display = '';
+              artistCount++;
+            }
+          });
+
+          // Show up to 3 featured artists of the selected genre
+          featuredArtistCards.forEach(card => {
+            if (card.getAttribute('data-genre') === genre && featuredCount < 3) {
+              card.style.display = '';
+              featuredCount++;
+            }
+          });
+        }
+      }
+
+      // Add click event listeners to filter tags
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          // Remove active class from all tags
+          filterTags.forEach(t => t.classList.remove('active'));
+          
+          // Add active class to clicked tag
+          tag.classList.add('active');
+          
+          // Get genre and filter artists
+          const genre = tag.getAttribute('data-genre');
+          filterArtists(genre);
+        });
+      });
+
+      // Initial filter for "All Genres"
+      filterArtists('all');
+    });
+  </script>
+</body>
+</html>

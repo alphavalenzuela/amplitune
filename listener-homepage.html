@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amplitune - Music Discovery Platform</title>
+    <link rel="stylesheet" href="styles/listener-homepage.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="body-container">
+        <img src="styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+    </div>
+    <div class="content">
+        <nav id="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#whats-new">Explore Music</a></li>
+                    <li><a href="#whos-new">Explore Artists</a></li>
+                    <li><a href="#whats-up">Feed</a></li>
+
+                    <li>
+                        <a href="user-profile.html" class="icon-link" title="Profile">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </a>
+                    </li>
+
+                    <li class="settings-dropdown">
+                        <div class="settings-icon" tabindex="0">
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                        <div class="dropdown-menu" aria-hidden="true">
+                            <a href="listener-settings.html">Profile Settings</a>
+                            <!-- In the dropdown menu -->
+                            <button type="button" class="logout-btn" id="logoutButton">Logout</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="hero" style="padding: 100px 0;">
+            <div class="container">
+                <h1>Discover New Artists</h1>
+                <p>Find your next favorite artist from the Philippines' growing indie music scene</p>
+                <div class="search-container">
+                    <input type="text" placeholder="Search artists, songs, or albums...">
+                    <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <main class="container">
+            <section id="whats-new" class="section">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">What's New?</h2>
+                    <a href="all-songs.html" class="section-link">See all</a>
+                </div>
+                
+                <div class="cards">
+                    <a href="#" class="card-link new-release-card"
+                        data-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748348279/600x600bf-60_nlmlfu.jpg"
+                        data-title="Sabik"
+                        data-artist="Illest Morena"
+                        data-description="This song captures the intense longing and anticipation felt when deeply missing someone, painting a vivid picture of affection and desire."
+                        data-youtube-link="https://youtu.be/rN38yQIFXC8?si=3NqE1EjzuBMjHDhK"
+                        data-spotify-link="https://open.spotify.com/track/4TFRpNfvdaW1sNmoUtZ5fV?si=8235624304fe4b01"
+                        data-audio-preview="audios/Sabik - Illest Morena (Official Music Video)-[Trimmed by Rev.com].mp3">
+                        <div class="card">
+                            <div class="card-img-container" style="overflow: hidden;">
+                                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748348279/600x600bf-60_nlmlfu.jpg" alt="damdamin! - Syd Hartha" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Sabik</h3>
+                                <p class="card-subtitle">Illest Morena</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-link new-release-card"
+                        data-image="https://i.scdn.co/image/ab67616d00001e02a081ecee7aaff1c678fb78a2"
+                        data-title="damdamin!"
+                        data-artist="Syd Hartha"
+                        data-description="Syd Hartha's latest single explores profound emotions and introspection, inviting listeners into a journey of self-discovery through heartfelt lyrics."
+                        data-youtube-link="https://youtu.be/MMW-S76YGBw?feature=shared"
+                        data-spotify-link="https://open.spotify.com/track/6nrGNaUnAtLTbXMW4k9kKE?si=1a4d1fd511ae4f72"
+                        data-audio-preview="audios/syd hartha - damdamin! [Official Music Video]-[Trimmed by Rev.com].mp3"> 
+                        <div class="card">
+                            <div class="card-img-container" style="overflow: hidden;">
+                                <img src="https://i.scdn.co/image/ab67616d00001e02a081ecee7aaff1c678fb78a2" alt="damdamin! - Syd Hartha" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">damdamin!</h3>
+                                <p class="card-subtitle">Syd Hartha</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-link new-release-card"
+                        data-image="https://www.therealcosmos.com/wp-content/uploads/2024/02/Sony-MediaBox-DSC01302-Large.jpeg"
+                        data-title="Telepono"
+                        data-artist="One Click Straight"
+                        data-description="A vibrant indie rock track from One Click Straight, 'Telepono' blends catchy melodies with poignant lyrics about connection and communication."
+                        data-youtube-link="https://youtu.be/sPvuG5h_1Hc?si=GETP12v5oKD6C8U5"
+                        data-spotify-link="https://open.spotify.com/track/77KJXJXoaBc1xHDiENrm71?si=2a0e76eff0cd4a7b"
+                        data-audio-preview="audios/One Click Straight - Telepono (Official Music Video)-[Trimmed by Rev.com].mp3">
+                        <div class="card">
+                            <div class="card-img-container" style="overflow: hidden;">
+                                <img src="https://www.therealcosmos.com/wp-content/uploads/2024/02/Sony-MediaBox-DSC01302-Large.jpeg" alt="Telepono - One Click Straight" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Telepono</h3>
+                                <p class="card-subtitle">One Click Straight</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-link new-release-card"
+                        data-image="https://pbs.twimg.com/media/FgFs09zacAA1qzI.jpg"
+                        data-title="Medisina"
+                        data-artist="Zild"
+                        data-description="Zild's 'Medisina' is an experimental yet accessible track, showcasing his unique style and lyrical depth, often exploring themes of urban life and introspection."
+                        data-youtube-link="https://youtu.be/-0JlqYekQlQ?si=kt7Kvg7L_fSv7Gee"
+                        data-spotify-link="https://open.spotify.com/track/0pFWRoaSuxR0GmkF9NxxV0?si=c37cfd0e544644fb"
+                        data-audio-preview="audios/Zild - Medisina (Official Video)-[Trimmed by Rev.com].mp3">
+                        <div class="card">
+                            <div class="card-img-container" style="overflow: hidden;">
+                                <img src="https://pbs.twimg.com/media/FgFs09zacAA1qzI.jpg" alt="Langit Mong Bughaw - Zild" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Medisina</h3>
+                                <p class="card-subtitle">Zild</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-link new-release-card"
+                        data-image="https://i.scdn.co/image/ab67616d00001e023842a2a748fedbdeec88403a"
+                        data-title="Settled"
+                        data-artist="The Ransom Collective"
+                        data-description="An enchanting folk-pop anthem by The Ransom Collective, 'Settled' is characterized by its lush harmonies and uplifting message of finding peace."
+                        data-youtube-link="https://youtu.be/m9ckFrZwejA?si=NDt-3ZDNuUb_a_Y7"
+                        data-spotify-link="https://open.spotify.com/track/0MDI5AnC24Vns2kToH4iM9?si=f4706044da684d04"
+                        data-audio-preview="audios/The Ransom Collective - Settled-[Trimmed by Rev.com].mp3">
+                        <div class="card">
+                            <div class="card-img-container" style="overflow: hidden;">
+                                <img src="https://i.scdn.co/image/ab67616d00001e023842a2a748fedbdeec88403a" alt="Settled - The Ransom Collective" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Settled</h3>
+                                <p class="card-subtitle">The Ransom Collective</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section id="whos-new" class="section">
+                <div class="section-header" style="padding: 0">
+                    <h2 class="section-title">Who's Making Waves?</h2>
+                    <a href="all-artists.html" class="section-link">See all</a>
+                </div>
+                
+                <div class="artist-scroll-wrapper">
+                    <button class="scroll-btn left" onclick="scrollArtists(-1)">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <div class="artist-scroll">
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <a href="artist-profiles/Tothapi.html">
+                                    <img src="https://images.genius.com/0a6cb542d402c2efd5200589b63d9fa4.554x554x1.jpg" alt="Tothapi" class="circle-img">
+                                </a>
+                            </div>
+                            <h3 class="circle-title">Tothapi</h3>
+                            <p class="circle-subtitle">R&B / Soul</p>
+                        </div>
+
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <a href="artist-profiles/Kayl_Garcia.html">
+                                    <img src="https://i.scdn.co/image/ab6761610000e5eb64e0e31c50bfa2028abeb2b4" alt="Kayl Garcia" class="circle-img">
+                                </a>
+                            </div>
+                            <h3 class="circle-title">Kayl Garcia</h3>
+                            <p class="circle-subtitle">Indie Pop</p>
+                        </div>
+
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <a href="artist-profiles/The_Ransom_Collective.html">
+                                    <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747709540/ransom-collective_jc5jzn.webp" alt="Ransom Collective" class="circle-img">
+                                </a>
+                            </div>
+                            <h3 class="circle-title">The Ransom Collective</h3>
+                            <p class="circle-subtitle">Folk Pop</p>
+                        </div>
+
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <a href="artist-profiles/Illest_Morena.html">
+                                    <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747684347/illest-morena_kwmnmw.jpg" alt="Illest Morena" class="circle-img">
+                                </a>
+                            </div>
+                            <h3 class="circle-title">Illest Morena</h3>
+                            <p class="circle-subtitle">Hip-hop / R&B</p>
+                        </div>
+
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <a href="artist-profiles/Stef_Aranas.html">
+                                    <img src="https://i.scdn.co/image/ab67616100005174f023ff05e37e332bb02daec9" alt="Stef Aranas" class="circle-img">
+                                </a>
+                            </div>
+                            <h3 class="circle-title">Stef Aranas</h3>
+                            <p class="circle-subtitle">Pop / R&B</p>
+                        </div>
+
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <img src="https://cdn.pulp.ph/storage/6747e510a2988.jpg" alt="Stef Aranas" class="circle-img">
+                            </div>
+                            <h3 class="circle-title">Maki</h3>
+                            <p class="circle-subtitle">Alternative Indie / Pop</p>
+                        </div>
+
+                        <div class="circle-card">
+                            <div class="circle-img-container">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVVRQYOTjYptID0wzRSU32tJgeHFC9QLjBvyS0ALubH_2kFuxETBrzdIcGtDx96hvDeo&usqp=CAU" alt="Stef Aranas" class="circle-img">
+                            </div>
+                            <h3 class="circle-title">Mateo</h3>
+                            <p class="circle-subtitle">Folk</p>
+                        </div>
+                    </div>
+
+                    <button class="scroll-btn right" onclick="scrollArtists(1)">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+
+
+            <section id="whats-up" class="section">
+              <div class="section-header" style="padding: 0">
+                  <h2 class="section-title">What's up?</h2>
+                  <a href="all-posts.html" class="section-link">View all</a>
+              </div>
+
+              <div class="post" data-post-title="🌻 &quot;damdamin!&quot; out now! 🌻"
+                  data-post-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747738311/damdamin_jlkaco.jpg"
+                  data-post-artist="Syd Hartha"
+                  data-post-date="November 24, 2023"
+                  data-full-post-text="si &quot;damdamin!&quot; ay isang kantang tungkol sa ligaya at pagmamahal, sa paglimot sa mga takot, at pagtanggap sa sarili. Isang paglalakbay na sumasalamin sa karanasan ng maraming kabataang Pilipino ngayon. Sa bawat nota, binibigyang-buhay ni Syd Hartha ang bawat damdamin, na nagpapakita ng kanyang kahusayan sa pagsulat ng musika.">
+                  <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747738311/damdamin_jlkaco.jpg" alt="🌻 'damdamin!' out now! 🌻" class="post-img">
+                  <div class="post-content">
+                      <div class="post-header">
+                          <h3 class="post-title">🌻 "damdamin!" out now! 🌻</h3>
+                          <span class="post-tag">New Post</span>
+                      </div>
+                      <p class="post-meta">Syd Hartha - November 24, 2023</p>
+                      <p class="post-text">si "damdamin!" ay isang kantang tungkol sa ligaya at pagmamahal...</p>
+                      <div class="post-footer">
+                          <a href="#" class="post-link open-post-modal">Read more</a> <div class="post-stats">
+                              <span class="post-stat">
+                                  <i class="fa-regular fa-heart"></i> 243
+                              </span>
+                              <span class="post-stat share-button" data-url="URL_HERE">
+                                  <i class="bi bi-share"></i> 44
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="post" data-post-title="New look and releases single “Small Talk”"
+                  data-post-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747753753/one-click-straight_cfeipt.jpg"
+                  data-post-artist="One Click Straight"
+                  data-post-date="December 3, 2023"
+                  data-full-post-text="‘Small Talk’ is about the frequent situation you find yourself in when you’re talking to the person you want to get to know. It’s depicts the desperation a person is willing to go through for a glimpse of something more,” the band says about the track, which follows the release of 'Pati Ba Pintig ng Puso?,' a collaboration between One Click Straight and the legendary rap icon, Gloc-9.">
+                  <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747753753/one-click-straight_cfeipt.jpg" alt="New Sticker Designs!" class="post-img">
+                  <div class="post-content">
+                      <div class="post-header">
+                          <h3 class="post-title">New look and releases single “Small Talk”</h3>
+                          <span class="post-tag">New Post</span>
+                      </div>
+                      <p class="post-meta">One Click Straight - December 3, 2023</p>
+                      <p class="post-text">‘Small Talk’ is about the frequent situation you find yourself in when you’re talking to the person you want to get to know. It’s depicts the desperation a person is willing to go through for a glimpse of something more,” the band says about the track...</p>
+                      <div class="post-footer">
+                          <a href="#" class="post-link open-post-modal">Read more</a>
+                          <div class="post-stats">
+                              <span class="post-stat">
+                                  <i class="fa-regular fa-heart"></i> 157
+                              </span>
+                              <span class="post-stat share-button" data-url="URL_HERE">
+                                  <i class="bi bi-share"></i> 24
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="post" data-post-title="Announces single called ‘Cvnty’"
+                  data-post-image="https://i.scdn.co/image/ab67616d0000b273ba1213f07eb87fe245a85f01"
+                  data-post-artist="Stef Aranas"
+                  data-post-date="June 13, 2024"
+                  data-full-post-text="The song 'Cvnty' is about empowering queer people, especially femmes, and embracing femininity. I want my music to empower my listeners, particularly with this release. The song aims to celebrate femininity in all shapes and forms, especially within the queer community. It’s a very personal song, reflecting my identity as a queer femme artist, and I hope it resonates with others in their journey of self-acceptance and empowerment.">
+                  <img src="https://i.scdn.co/image/ab67616d0000b273ba1213f07eb87fe245a85f01" alt="Cvnty - Stef Aranas " class="post-img">
+                  <div class="post-content">
+                      <div class="post-header">
+                          <h3 class="post-title">Announces single called ‘Cvnty’</h3>
+                          <span class="post-tag">New Post</span>
+                      </div>
+                      <p class="post-meta">Stef Aranas - June 13, 2024</p>
+                      <p class="post-text">The song "Cvnty" is about empowering queer people, especially femmes, and embracing femininity. I want my music to empower my listeners, particularly with this release. The song aims to celebrate femininity in all shapes and forms, especially within the queer community....</p>
+                      <div class="post-footer">
+                          <a href="#" class="post-link open-post-modal">Read More</a>
+                          <div class="post-stats">
+                              <span class="post-stat">
+                                  <i class="fa-regular fa-heart"></i> 429
+                              </span>
+                              <span class="post-stat share-button" data-url="URL_HERE">
+                                  <i class="bi bi-share"></i> 34
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </section>
+
+            <div id="postModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" id="closePostModalBtn">×</span>
+                    <div class="modal-body post-modal-body">
+                        <img id="modalPostImage" src="" alt="Post Image" class="modal-post-img">
+                        <div class="modal-text-content">
+                            <h2 id="modalPostTitle"></h2>
+                            <p id="modalPostMeta"></p>
+                            <p id="modalPostDescription"></p>
+
+                            <div class="full-listen-links">
+                            <p>Listen to the full song:</p>
+                            <div class="song-platforms" id="modalPlatformLinks">
+                              <a href="https://youtu.be/0aNLFlFFKpw?feature=shared" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                              <a href="https://open.spotify.com/track/06IkOr83qPqa3yYvrIjgxp?si=e74c7341b85741af" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="newReleaseModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div class="modal-body">
+                    <img id="modalSongImage" src="" alt="Song Artwork" class="modal-song-img">
+                    <div class="modal-text-content">
+                        <h2 id="modalSongTitle"></h2>
+                        <p id="modalSongArtist"></p>
+                        <p id="modalSongDescription"></p>
+
+                        <div class="custom-audio-player-container"> 
+                          <audio class="audio-element" src="" id="modalAudioPreview"></audio> 
+                          <div class="controls-wrapper">
+                            <button class="play-pause-btn"><i class="fas fa-play"></i></button>
+                            <div class="progress-bar-container">
+                              <div class="progress-bar"></div>
+                            </div>
+                            <span class="time-display">0:00 / 0:00</span>
+                            <div class="volume-container">
+                              <i class="fas fa-volume-up volume-icon"></i>
+                              <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
+                            </div>
+                          </div>
+
+                          <div class="full-listen-links">
+                            <p>Listen to the full song:</p>
+                            <div class="song-platforms" id="modalPlatformLinks">
+                              <a href="https://youtu.be/0aNLFlFFKpw?feature=shared" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube platform-icon"></i></a>
+                              <a href="https://open.spotify.com/track/06IkOr83qPqa3yYvrIjgxp?si=e74c7341b85741af" target="_blank" aria-label="Spotify"><i class="fa-brands fa-spotify platform-icon"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- <div class="modal-platforms">
+                            <h3>Listen on:</h3>
+                            <div id="modalPlatformLinks" class="song-platforms">
+                                </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="logo">
+                        <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                    </div>
+                    <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <h4 class="footer-heading">Want to know more?</h4>
+                    <ul class="footer-links">
+                        <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                        <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright Info</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="functions/index.js"></script>
+
+    <script>
+        function scrollArtists(direction) {
+            const container = document.querySelector('.artist-scroll');
+            const scrollAmount = 300; 
+            
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Toggle mobile menu
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // Settings dropdown functionality
+            const settingsIcon = document.querySelector('.settings-icon');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            if (settingsIcon && dropdownMenu) {
+                settingsIcon.addEventListener('click', () => {
+                    const isExpanded = settingsIcon.getAttribute('aria-expanded') === 'true';
+                    settingsIcon.setAttribute('aria-expanded', !isExpanded);
+                    dropdownMenu.setAttribute('aria-hidden', isExpanded);
+                    dropdownMenu.classList.toggle('show');
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!settingsIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                        settingsIcon.setAttribute('aria-expanded', 'false');
+                        dropdownMenu.setAttribute('aria-hidden', 'true');
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // --- Modal Logic ---
+    const newReleaseCards = document.querySelectorAll('.new-release-card');
+    const modal = document.getElementById('newReleaseModal');
+    const modalContent = modal.querySelector('.modal-content');
+    const closeModalBtn = document.querySelector('.close-button');
+
+    const modalSongImage = document.getElementById('modalSongImage');
+    const modalSongTitle = document.getElementById('modalSongTitle');
+    const modalSongArtist = document.getElementById('modalSongArtist');
+    const modalSongDescription = document.getElementById('modalSongDescription');
+    const modalPlatformLinks = document.getElementById('modalPlatformLinks');
+
+    // Get references for the custom audio player elements within the modal
+    // NOW USING THE ID YOU ADDED
+    const modalAudioElement = document.getElementById('modalAudioPreview');
+    const modalAudioPlayerContainer = modalAudioElement.closest('.custom-audio-player-container'); // Find the parent container
+    
+    // Ensure these are selected AFTER the modalAudioElement is defined
+    const playPauseBtn = modalAudioPlayerContainer.querySelector('.play-pause-btn');
+    const progressBarContainer = modalAudioPlayerContainer.querySelector('.progress-bar-container');
+    const progressBar = modalAudioPlayerContainer.querySelector('.progress-bar');
+    const timeDisplay = modalAudioPlayerContainer.querySelector('.time-display');
+    const volumeSlider = modalAudioPlayerContainer.querySelector('.volume-slider');
+    const volumeIcon = modalAudioPlayerContainer.querySelector('.volume-icon');
+
+
+    newReleaseCards.forEach(card => {
+        card.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Pause any currently playing audio on the page
+            document.querySelectorAll('audio').forEach(otherAudio => {
+                if (otherAudio !== modalAudioElement && !otherAudio.paused) {
+                    otherAudio.pause();
+                    const otherPlayPauseBtn = otherAudio.closest('.custom-audio-player-container')?.querySelector('.play-pause-btn');
+                    if (otherPlayPauseBtn) {
+                        otherPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                }
+            });
+
+            // Populate modal content from data attributes
+            modalSongImage.src = card.dataset.image;
+            modalSongTitle.textContent = card.dataset.title;
+            modalSongArtist.textContent = card.dataset.artist;
+            modalSongDescription.textContent = card.dataset.description;
+
+            // Clear previous platform links
+            modalPlatformLinks.innerHTML = '';
+
+            // Add YouTube link if available
+            if (card.dataset.youtubeLink && card.dataset.youtubeLink !== 'YOUR_SABIK_YOUTUBE_LINK_HERE') {
+                const youtubeLink = document.createElement('a');
+                youtubeLink.href = card.dataset.youtubeLink;
+                youtubeLink.target = '_blank';
+                youtubeLink.setAttribute('aria-label', 'Listen on YouTube');
+                youtubeLink.innerHTML = '<i class="fa-brands fa-youtube platform-icon"></i>';
+                modalPlatformLinks.appendChild(youtubeLink);
+            }
+
+            // Add Spotify link if available
+            if (card.dataset.spotifyLink && card.dataset.spotifyLink !== 'YOUR_SABIK_SPOTIFY_LINK_HERE') {
+                const spotifyLink = document.createElement('a');
+                spotifyLink.href = card.dataset.spotifyLink;
+                spotifyLink.target = '_blank';
+                spotifyLink.setAttribute('aria-label', 'Listen on Spotify');
+                spotifyLink.innerHTML = '<i class="fa-brands fa-spotify platform-icon"></i>';
+                modalPlatformLinks.appendChild(spotifyLink);
+            }
+
+            // Handle audio preview
+            if (card.dataset.audioPreview) {
+                modalAudioElement.src = card.dataset.audioPreview;
+                modalAudioElement.load(); // Load the new audio source
+                modalAudioPlayerContainer.classList.remove('hidden'); // Show the audio player
+                // Reset play/pause button and time display for new song
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                progressBar.style.width = '0%';
+                timeDisplay.textContent = '0:00 / 0:00';
+                modalAudioElement.currentTime = 0; // Reset playback position
+            } else {
+                modalAudioPlayerContainer.classList.add('hidden'); // Hide if no preview
+                modalAudioElement.pause();
+                modalAudioElement.src = ''; // Clear source to prevent loading errors
+                modalAudioElement.currentTime = 0;
+            }
+
+            // Show the modal
+            modal.classList.add('is-visible');
+            modalContent.classList.remove('closing');
+        });
+    });
+
+    // Close modal when close button is clicked
+    closeModalBtn.addEventListener('click', () => {
+        closeModal();
+    });
+
+    // Close modal when clicking outside of the modal content
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        // Pause and reset audio preview in modal before closing
+        if (modalAudioElement && !modalAudioElement.paused) {
+            modalAudioElement.pause();
+            modalAudioElement.currentTime = 0;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Reset play icon
+            progressBar.style.width = '0%'; // Reset progress bar
+            timeDisplay.textContent = '0:00 / 0:00'; // Reset time display
+        }
+
+        // Add the closing class to the content to trigger its exit animation
+        modalContent.classList.add('closing');
+
+        // Wait for the exit animation to complete before hiding the modal entirely
+        modalContent.addEventListener('transitionend', handleTransitionEnd, { once: true });
+
+        function handleTransitionEnd() {
+            modal.classList.remove('is-visible'); // Hide the modal container
+            modalContent.classList.remove('closing'); // Clean up the closing class
+        }
+    }
+
+    // --- Custom Audio Player Functionality within Modal ---
+
+    // Format time for display
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Play/Pause button functionality
+    playPauseBtn.addEventListener('click', () => {
+        if (modalAudioElement.paused) {
+            modalAudioElement.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            modalAudioElement.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
+
+    // Update progress bar and time display
+    modalAudioElement.addEventListener('timeupdate', () => {
+        const progress = (modalAudioElement.currentTime / modalAudioElement.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+        timeDisplay.textContent = `${formatTime(modalAudioElement.currentTime)} / ${formatTime(modalAudioElement.duration)}`;
+    });
+
+    // Update duration when metadata is loaded (fixes NaN/undefined duration initially)
+    modalAudioElement.addEventListener('loadedmetadata', () => {
+        timeDisplay.textContent = `0:00 / ${formatTime(modalAudioElement.duration)}`;
+    });
+
+
+    // Seek functionality
+    progressBarContainer.addEventListener('click', (e) => {
+        const clickX = e.offsetX; // X position of the click relative to the container
+        const width = progressBarContainer.offsetWidth; // Total width of the progress bar container
+        const duration = modalAudioElement.duration;
+        modalAudioElement.currentTime = (clickX / width) * duration;
+    });
+
+    // Volume control
+    volumeSlider.addEventListener('input', () => {
+        modalAudioElement.volume = volumeSlider.value;
+        if (modalAudioElement.volume === 0) {
+            volumeIcon.classList.remove('fa-volume-up');
+            volumeIcon.classList.add('fa-volume-mute');
+        } else {
+            volumeIcon.classList.remove('fa-volume-mute');
+            volumeIcon.classList.add('fa-volume-up');
+        }
+    });
+
+    // Mute/Unmute functionality
+    let lastVolume = 1; // Store last volume before muting
+    volumeIcon.addEventListener('click', () => {
+        if (modalAudioElement.volume === 0) {
+            modalAudioElement.volume = lastVolume; // Restore last volume
+            volumeSlider.value = lastVolume;
+            volumeIcon.classList.remove('fa-volume-mute');
+            volumeIcon.classList.add('fa-volume-up');
+        } else {
+            lastVolume = modalAudioElement.volume; // Save current volume
+            modalAudioElement.volume = 0;
+            volumeSlider.value = 0;
+            volumeIcon.classList.remove('fa-volume-up');
+            volumeIcon.classList.add('fa-volume-mute');
+        }
+    });
+
+    // Handle audio ending
+    modalAudioElement.addEventListener('ended', () => {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        progressBar.style.width = '0%';
+        modalAudioElement.currentTime = 0; // Reset to beginning
+    });
+        });
+
+    // --- Post Modal Logic ---
+    const postModal = document.getElementById('postModal');
+    const closePostModalBtn = document.getElementById('closePostModalBtn');
+    const postModalContent = postModal.querySelector('.modal-content');
+
+    const modalPostImage = document.getElementById('modalPostImage');
+    const modalPostTitle = document.getElementById('modalPostTitle');
+    const modalPostMeta = document.getElementById('modalPostMeta');
+    const modalPostDescription = document.getElementById('modalPostDescription');
+
+    // Get all "Read more" links for posts
+    const openPostModalBtns = document.querySelectorAll('.open-post-modal');
+
+    openPostModalBtns.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the parent post div
+            const postDiv = event.target.closest('.post');
+
+            // Populate modal content from data attributes
+            modalPostImage.src = postDiv.dataset.postImage;
+            modalPostTitle.textContent = postDiv.dataset.postTitle;
+            modalPostMeta.textContent = `${postDiv.dataset.postArtist} - ${postDiv.dataset.postDate}`;
+            modalPostDescription.textContent = postDiv.dataset.fullPostText; // Use the full text
+
+            // Show the modal
+            postModal.classList.add('is-visible');
+            postModalContent.classList.remove('closing');
+        });
+    });
+
+    // Close modal when close button is clicked
+    closePostModalBtn.addEventListener('click', () => {
+        closePostModal();
+    });
+
+    // Close modal when clicking outside of the modal content
+    window.addEventListener('click', (event) => {
+        if (event.target === postModal) {
+            closePostModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && postModal.classList.contains('is-visible')) {
+            closePostModal();
+        }
+    });
+
+    function closePostModal() {
+        postModalContent.classList.add('closing');
+        postModalContent.addEventListener('transitionend', handlePostTransitionEnd, { once: true });
+
+        function handlePostTransitionEnd() {
+            postModal.classList.remove('is-visible');
+            postModalContent.classList.remove('closing');
+            // Clear content after closing to prevent flicker on next open
+            modalPostImage.src = '';
+            modalPostTitle.textContent = '';
+            modalPostMeta.textContent = '';
+            modalPostDescription.textContent = '';
+        }
+    }
+
+    // --- Share Button Logic (if you want to implement this) ---
+    const shareButtons = document.querySelectorAll('.share-button');
+    shareButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const urlToShare = button.dataset.url || window.location.href; // Use data-url or current page URL
+            // Basic share functionality (can be improved with Web Share API or custom dialog)
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: urlToShare
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(console.error);
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                prompt("Copy this link to share:", urlToShare);
+            }
+        });
+    });
+
+    // In the JavaScript section
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            window.location.href = 'logout.html';
+        });
+    }
+
+    </script>
+
+</body>
+</html>
