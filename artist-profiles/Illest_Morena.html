@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amplitune - Music Discovery Platform</title>
+  <link rel="stylesheet" href="../styles/artist-profiles.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="body-container">
+    <img src="../styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+  </div>
+
+  <div class="content" style="padding-top: 100px;">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+      <div class="container">
+          <div class="logo">
+              <a href="../listener-homepage.html#whos-new">Ampli<span class="gradient-text">Tune</span></a>
+          </div>
+          <div class="menu-toggle" id="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+              <li><a href="../listener-homepage.html">Home</a></li>
+              <li><a href="../listener-homepage.html#whats-new">Explore Music</a></li>
+              <li><a href="../listener-homepage.html#whos-new">Explore Artists</a></li>
+              <li><a href="../listener-homepage.html#whats-up">Feed</a></li>
+
+              <!-- Profile Icon -->
+              <li>
+                <a href="../user-profile.html" class="icon-link" title="Profile">
+                  <i class="fa-solid fa-user-circle"></i>
+                </a>
+              </li>
+
+              <!-- Settings Dropdown -->
+              <li class="settings-dropdown">
+                <div class="settings-icon icon-link" tabindex="0">
+                  <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="dropdown-menu" aria-hidden="true">
+                  <a href="../user-settings.html">Profile Settings</a>
+                  <form method="POST" action="../logout.html" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                  </form>
+                </div>
+              </li>
+
+          </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="user-profile-header">
+        <div class="grid-container">
+            <div class="profile-image-container">
+                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_01.jpg" alt="Profile Image">
+            </div>
+
+            <div class="artist-info-middle">
+                <div>
+                    <h1>Illest Morena</h1>
+                    <div class="genre">Hip-hop / R&B</div>
+                </div>
+
+                <div class="stats-group">
+                    <div>
+                        <div class="stat-value">356K</div>
+                        <div class="stat-label">Followers</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">22</div>
+                        <div class="stat-label">Tracks</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">Albums</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column-buttons-social">
+                <div class="artist-buttons">
+                    <button class="btn btn-follow"><i class="fas fa-user-plus"></i> Follow</button>
+                    <button class="btn btn-share"><i class="fas fa-share"></i> Share</button>
+                </div>
+                <div class="artist-social-links">
+                    <a href="https://www.instagram.com/illestmorena/" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/IllestMorena" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://open.spotify.com/artist/2zRoFfKfqM5jaUysSG9EUI?si=6z9oyNDyRY2J3rD9R5_x9Q" class="social-link" target="_blank">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC5vyCrDzr4-DOUqML3vUC3Q" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-container mb-5">
+        <div>
+            <h2 class="section-title">Biography</h2>
+            <div class="artist-bio-content">
+                <div class="artist-bio-text">
+                    <p>Illest Morena is here to slay, and she's not messing around. Angelica Pola Layague is taking the local music scene by storm and looks good doing it.</p>
+                    <p>Do you want confidence? She's got an unmatched swagger. Do you want style? Just check out her Insta feed - she's rocking the latest looks like nobody's business.</p>
+                    <p>With talent and drive like hers, there's no denying that she is the one and only illest morena in town.</p>
+                </div>
+                <div class="quick-facts-container">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-music"></i>
+                            <span>Genre: Hip-hop / R&B</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Based in: Manila, Philippines</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Active since: 2020</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-trophy"></i>
+                            <span>Rising Star Award 2023</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!--Discography-->
+      <section class="section-container mb-5">
+          <h2 class="section-title" style="padding-bottom: 5px;">Discography</h2>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="release-grid">
+                <!-- Album 1 -->
+                <div class="release-card" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-card-bg), var(--color-card-bg)), linear-gradient(45deg, #ffffff, #00bfff); background-origin: border-box; background-clip: padding-box, border-box;">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273aa1447aba203bc96a76e897b" alt="3am" class="release-image">
+                    <div class="release-info">
+                        <h3 class="release-title">THE BADDEST(ILLEST MORENA)</h3>
+                        <p class="release-artist">Illest Morena</p>
+                        <div class="release-meta">
+                            <span class="release-year">2025</span>
+                            <span class="release-type">Single</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Single -->
+                <div class="release-card" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-card-bg), var(--color-card-bg)), linear-gradient(45deg, #ffffff, #00bfff); background-origin: border-box; background-clip: padding-box, border-box;">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2730a73a1aa1444ae72818e4d18" alt="Hardin" class="release-image">
+                    <div class="release-info">
+                        <h3 class="release-title">Dahan Dahan</h3>
+                        <p class="release-artist">Illest Morena</p>
+                        <div class="release-meta">
+                            <span class="release-year">2024</span>
+                            <span class="release-type">Single</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EP -->
+                <div class="release-card" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-card-bg), var(--color-card-bg)), linear-gradient(45deg, #ffffff, #00bfff); background-origin: border-box; background-clip: padding-box, border-box;">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273f83dd120c6dca21a717d74cb" alt="Neon Streets" class="release-image">
+                    <div class="release-info">
+                        <h3 class="release-title">Morenita</h3>
+                        <p class="release-artist">Illest Morena</p>
+                        <div class="release-meta">
+                            <span class="release-year">2024</span>
+                            <span class="release-type">Album</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </section> 
+      
+      <br>
+
+      <!--Upcoming Events-->
+      <section class="section-container mb-5">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-container">
+          <!-- Event 1 -->
+            <div class="event-card">
+              <div class="event-date">
+                <span class="event-month">FEB</span>
+                <span class="event-day">13</span>
+              </div>
+              <div class="event-details">
+                <h4 class="event-title">Live at Atmosphera Poblacion</h4>
+                <p class="event-location"> Makati, Metro Manila</p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-tickets">Buy Tickets</button>
+              </div>
+            </div>
+          <!-- Event 2 -->
+            <div class="event-card">
+              <div class="event-date">
+                <span class="event-month">MAY</span>
+                <span class="event-day">7</span>
+              </div>
+              <div class="event-details">
+                <h4 class="event-title">Live at MORe - Manila</h4>
+                <p class="event-location">Quezon City, Philippines</p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-tickets">Buy Tickets</button>
+              </div>
+            </div>
+          <!-- Event 3 -->
+            <div class="event-card">
+              <div class="event-date">
+                <span class="event-month">FEB</span>
+                <span class="event-day">11</span>
+              </div>
+              <div class="event-details">
+                <h4 class="event-title">Live at Wish 107.5</h4>
+                <p class="event-location">Caloocan, Metro Manila</p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-tickets">Buy Tickets</button>
+              </div>
+            </div>
+        </div>
+      </section>
+      
+      <br>
+      
+      <!--Latest Updates-->
+      <section class="section-container mb-5">
+        <h2 class="section-title">Latest Updates</h2>
+        <div style="overflow-x: auto; padding: 1rem 0; margin: 0 -1rem;">
+            <style>
+                /* Webkit browsers (Chrome, Safari) */
+                div::-webkit-scrollbar {
+                    height: 8px;
+                }
+                div::-webkit-scrollbar-track {
+                    background: rgba(0, 0, 0, 0.1);
+                    border-radius: 4px;
+                }
+                div::-webkit-scrollbar-thumb {
+                    background: linear-gradient(90deg, #ffffff, #ff69b4, #00bfff, #32cd32, #9b4dca);
+                    border-radius: 4px;
+                }
+            </style>
+            <div style="display: flex; gap: 1rem; padding: 0 1rem; min-width: min-content;">
+                <!-- Post 1 -->
+                <div style="flex: 0 0 400px;">
+                    <div class="post-card" style="background: linear-gradient(45deg, var(--color-card-bg), rgba(155, 77, 202, 0.1)); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(155, 77, 202, 0.2); height: 100%;">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_01.jpg" alt="IllestMorena" class="post-user-image" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                                <div class="post-user-info">
+                                    <h5 class="post-user-name" style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Illest Morena</h5>
+                                    <p class="post-date" style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">May 7, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content" style="margin: 1rem 0;">
+                            <p class="post-text" style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5; color: var(--color-text);">Tune in with me live at MORe - Manila😘</p>
+                            <div class="post-image-container">
+                                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_01.jpg" alt="Post image" class="post-image img-fluid" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                            </div>
+                        </div>
+                        <div class="post-actions" style="display: flex; gap: 1rem; border-top: 1px solid rgba(155, 77, 202, 0.2); padding-top: 1rem;">
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="far fa-heart"></i> Like</button>
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="fas fa-share"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post 2 -->
+                <div style="flex: 0 0 400px;">
+                    <div class="post-card" style="background: linear-gradient(45deg, var(--color-card-bg), rgba(155, 77, 202, 0.1)); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(155, 77, 202, 0.2); height: 100%;">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="https://scontent.fmnl30-3.fna.fbcdn.net/v/t39.30808-6/313346225_685551669604212_2304210259559617452_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHz2kjR24sNpRZn57CoNCedGg52cgET-2kaDnZyARP7aQbU_luW-iYQn32icvrHVi7JpUgCNYG9Hik_UGtTqbld&_nc_ohc=1JmYlX2fs-gQ7kNvwGCq5S1&_nc_oc=Adn8wDW41paIdRM0YVdcCLMyS49355LU1IBj8PZlhZtv41SZq9n8-i-pn9Y47HwC9Y8&_nc_zt=23&_nc_ht=scontent.fmnl30-3.fna&_nc_gid=9k3iItiOLjo5LeIlNt_m2w&oh=00_AfKDHZQECgIcsiJEFGSnIHQgnYQ3RUmfiymZluWy42QykA&oe=682BD06F" alt="TokiPal" class="post-user-image" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                                <div class="post-user-info">
+                                    <h5 class="post-user-name" style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Illest Morena</h5>
+                                    <p class="post-date" style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">May 4, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content" style="margin: 1rem 0;">
+                            <p class="post-text" style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5; color: var(--color-text);">fell in luv with u in the summer 🌅</p>
+                            <div class="post-image-container">
+                                <img src="https://i1.sndcdn.com/avatars-zmrw7gDyfMu0oXLV-fAlpRA-t1080x1080.jpg" alt="Post image" class="post-image img-fluid" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                            </div>
+                        </div>
+                        <div class="post-actions" style="display: flex; gap: 1rem; border-top: 1px solid rgba(155, 77, 202, 0.2); padding-top: 1rem;">
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="far fa-heart"></i> Like</button>
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="fas fa-share"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post 3 -->
+                <div style="flex: 0 0 400px;">
+                    <div class="post-card" style="background: linear-gradient(45deg, var(--color-card-bg), rgba(155, 77, 202, 0.1)); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(155, 77, 202, 0.2); height: 100%;">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_01.jpg" alt="IllestMorena" class="post-user-image" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                                <div class="post-user-info">
+                                    <h5 class="post-user-name" style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Illest Morena</h5>
+                                    <p class="post-date" style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">May 2, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content" style="margin: 1rem 0;">
+                            <p class="post-text" style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5; color: var(--color-text);">New single dropping soon! Stay tuned 🎵</p>
+                            <div class="post-image-container">
+                                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_02.jpg" alt="Post image" class="post-image img-fluid" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                            </div>
+                        </div>
+                        <div class="post-actions" style="display: flex; gap: 1rem; border-top: 1px solid rgba(155, 77, 202, 0.2); padding-top: 1rem;">
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="far fa-heart"></i> Like</button>
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="fas fa-share"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post 4 -->
+                <div style="flex: 0 0 400px;">
+                    <div class="post-card" style="background: linear-gradient(45deg, var(--color-card-bg), rgba(155, 77, 202, 0.1)); border-radius: var(--border-radius); padding: 1.5rem; border: 1px solid rgba(155, 77, 202, 0.2); height: 100%;">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_01.jpg" alt="IllestMorena" class="post-user-image" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                                <div class="post-user-info">
+                                    <h5 class="post-user-name" style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Illest Morena</h5>
+                                    <p class="post-date" style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">April 28, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content" style="margin: 1rem 0;">
+                            <p class="post-text" style="margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5; color: var(--color-text);">Behind the scenes of my latest music video shoot 🎥✨</p>
+                            <div class="post-image-container">
+                                <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/VOLUMES_ILLEST_MORENA_FEATURED_IMAGE.jpg" alt="Post image" class="post-image img-fluid" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                            </div>
+                        </div>
+                        <div class="post-actions" style="display: flex; gap: 1rem; border-top: 1px solid rgba(155, 77, 202, 0.2); padding-top: 1rem;">
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="far fa-heart"></i> Like</button>
+                            <button class="post-action-btn" style="background: none; border: none; color: var(--color-text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: color 0.3s ease;"><i class="fas fa-share"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section class="section-container mb-5">
+          <h2 class="section-title">Gallery</h2>
+          <div style="overflow-x: auto; padding: 1rem 0; margin: 0 -1rem;">
+              <style>
+                  /* Webkit browsers (Chrome, Safari) */
+                  div::-webkit-scrollbar {
+                      height: 8px;
+                  }
+                  div::-webkit-scrollbar-track {
+                      background: rgba(0, 0, 0, 0.1);
+                      border-radius: 4px;
+                  }
+                  div::-webkit-scrollbar-thumb {
+                      background: linear-gradient(90deg, #ffffff, #ff69b4, #00bfff, #32cd32, #9b4dca);
+                      border-radius: 4px;
+                  }
+              </style>
+              <div style="display: flex; gap: 1rem; padding: 0 1rem; min-width: min-content;">
+                  <!-- Gallery image 1 -->
+                  <div style="flex: 0 0 300px;">
+                      <img src="https://i1.sndcdn.com/avatars-zmrw7gDyfMu0oXLV-fAlpRA-t1080x1080.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                  </div>
+                  <!-- Gallery image 2 -->
+                  <div style="flex: 0 0 300px;">
+                      <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_02.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                  </div>
+                  <!-- Gallery image 3 -->
+                  <div style="flex: 0 0 300px;">
+                      <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/VOLUMES_ILLEST_MORENA_FEATURED_IMAGE.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                  </div>
+                  <!-- Duplicated images -->
+                  <div style="flex: 0 0 300px;">
+                      <img src="https://i1.sndcdn.com/avatars-zmrw7gDyfMu0oXLV-fAlpRA-t1080x1080.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                  </div>
+                  <div style="flex: 0 0 300px;">
+                      <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/BBPH_INARTICLE_HIPHOP_ILLEST_02.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                  </div>
+                  <div style="flex: 0 0 300px;">
+                      <img src="https://billboardphilippines.com/wp-content/uploads/2024/04/VOLUMES_ILLEST_MORENA_FEATURED_IMAGE.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                  </div>
+              </div>
+          </div>
+      </section>
+  </div>
+</main>
+
+<!-- Footer -->
+  <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo">
+                    <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h4 class="footer-heading">Want to know more?</h4>
+                <ul class="footer-links">
+                    <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                    <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Copyright Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>

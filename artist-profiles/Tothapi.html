@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amplitune - Music Discovery Platform</title>
+  <link rel="stylesheet" href="../styles/artist-profiles.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="body-container">
+    <img src="../styles/GradientMesh_Light.png" alt="Background Gradient" class="background">
+  </div>
+  <div class="content" style="padding-top: 100px;">
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+      <div class="container">
+          <div class="logo">
+              <a href="../listener-homepage.html#whos-new">Ampli<span class="gradient-text">Tune</span></a>
+          </div>
+          <div class="menu-toggle" id="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links" id="nav-links">
+              <li><a href="../listener-homepage.html">Home</a></li>
+              <li><a href="../listener-homepage.html#whats-new">Explore Music</a></li>
+              <li><a href="../listener-homepage.html#whos-new">Explore Artists</a></li>
+              <li><a href="../listener-homepage.html#whats-up">Feed</a></li>
+
+              <!-- Profile Icon -->
+              <li>
+                <a href="../user-profile.html" class="icon-link" title="Profile">
+                  <i class="fa-solid fa-user-circle"></i>
+                </a>
+              </li>
+
+              <!-- Settings Dropdown -->
+              <li class="settings-dropdown">
+                <div class="settings-icon icon-link" tabindex="0">
+                  <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="dropdown-menu" aria-hidden="true">
+                  <a href="../user-settings.html">Profile Settings</a>
+                  <form method="POST" action="../logout.html" style="margin:0;">
+                    <button type="submit" class="logout-btn">Logout</button>
+                  </form>
+                </div>
+              </li>
+
+          </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="user-profile-header">
+        <div class="grid-container">
+            <div class="profile-image-container">
+                <img src="https://res.cloudinary.com/drv6dkiee/image/upload/v1747787184/TO1_xxpy4d.jpg" alt="Profile Image">
+            </div>
+
+            <div class="artist-info-middle">
+                <div>
+                    <h1>Tothapi</h1>
+                    <div class="genre">R&B / Soul</div>
+                </div>
+
+                <div class="stats-group">
+                    <div>
+                        <div class="stat-value">61K</div>
+                        <div class="stat-label">Followers</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">10</div>
+                        <div class="stat-label">Tracks</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Albums</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column-buttons-social">
+                <div class="artist-buttons">
+                    <button class="btn btn-follow"><i class="fas fa-user-plus"></i> Follow</button>
+                    <button class="btn btn-share"><i class="fas fa-share"></i> Share</button>
+                </div>
+                <div class="artist-social-links">
+                    <a href="https://instagram.com/tokipal_official" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://twitter.com/tokipal" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://open.spotify.com/artist/tokipal" class="social-link" target="_blank">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                    <a href="https://youtube.com/TokiPalOfficial" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section-container mb-5">
+        <div>
+            <h2 class="section-title">Biography</h2>
+            <div class="artist-bio-content">
+                <div class="artist-bio-text">
+                    <p>Your friendly OPM band from the Philippines, where friendship transformed into melodious camaraderie. We craft tales of love and life through our music PH #TothapiStories</p>
+                    <p>Formed in 2020, Tothapi emerged from the vibrant Manila music scene, bringing together talented musicians with a shared passion for creating soulful R&B and contemporary Filipino music. Their unique sound, characterized by smooth harmonies and heartfelt lyrics, has resonated with Filipino listeners across generations. Through their songs, they tell stories of love, hope, and the Filipino experience, creating a soundtrack for the lives of their listeners.</p>
+                </div>
+                <div class="quick-facts-container">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-music"></i>
+                            <span>Genre: R&B / Soul</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Based in: Metro Manila</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Active since: 2020</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-trophy"></i>
+                            <span>Rising Star Award 2023</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!--Discography-->
+      <section class="section-container mb-5">
+          <h2 class="section-title" style="padding-bottom: 5px;">Discography</h2>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="release-grid">
+                <!-- Album 1 -->
+                 <a href="#" class="card-link new-release-card"
+                        data-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748348279/600x600bf-60_nlmlfu.jpg"
+                        data-title="Sabik"
+                        data-artist="Illest Morena"
+                        data-description="This song captures the intense longing and anticipation felt when deeply missing someone, painting a vivid picture of affection and desire."
+                        data-youtube-link="https://youtu.be/rN38yQIFXC8?si=3NqE1EjzuBMjHDhK"
+                        data-spotify-link="https://open.spotify.com/track/4TFRpNfvdaW1sNmoUtZ5fV?si=8235624304fe4b01"
+                        data-audio-preview="audios/Sabik - Illest Morena (Official Music Video)-[Trimmed by Rev.com].mp3">
+                        <div class="release-card" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-card-bg), var(--color-card-bg)), linear-gradient(45deg, #ffffff, #00bfff); background-origin: border-box; background-clip: padding-box, border-box;">
+                            <img src="https://i.scdn.co/image/ab67616d0000b27337f40a1be37fe12e57a1d16f" alt="Dreamscape" class="release-image">
+                            <div class="release-info">
+                                <h3 class="release-title">Panata</h3>
+                                <p class="release-artist">Tothapi</p>
+                                <div class="release-meta">
+                                    <span class="release-year">2024</span>
+                                    <span class="release-type">Single</span>
+                                </div>
+                            </div>
+                        </div>
+                  </a>
+                
+                <!-- Single -->
+                 <a href="#" class="card-link new-release-card"
+                        data-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748348279/600x600bf-60_nlmlfu.jpg"
+                        data-title="Sabik"
+                        data-artist="Illest Morena"
+                        data-description="This song captures the intense longing and anticipation felt when deeply missing someone, painting a vivid picture of affection and desire."
+                        data-youtube-link="https://youtu.be/rN38yQIFXC8?si=3NqE1EjzuBMjHDhK"
+                        data-spotify-link="https://open.spotify.com/track/4TFRpNfvdaW1sNmoUtZ5fV?si=8235624304fe4b01"
+                        data-audio-preview="audios/Sabik - Illest Morena (Official Music Video)-[Trimmed by Rev.com].mp3">
+                        <div class="release-card" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-card-bg), var(--color-card-bg)), linear-gradient(45deg, #ffffff, #00bfff); background-origin: border-box; background-clip: padding-box, border-box;">
+                            <img src="https://i.scdn.co/image/ab67616d0000b2738811ea609ce37be232b42896" alt="Midnight Echo" class="release-image">
+                            <div class="release-info">
+                                <h3 class="release-title">Kutsinta</h3>
+                                <p class="release-artist">Tothapi</p>
+                                <div class="release-meta">
+                                    <span class="release-year">2024</span>
+                                    <span class="release-type">Single</span>
+                                </div>
+                            </div>
+                        </div>
+                  </a>
+                
+                <!-- EP -->
+                 <a href="#" class="card-link new-release-card"
+                        data-image="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748348279/600x600bf-60_nlmlfu.jpg"
+                        data-title="Sabik"
+                        data-artist="Illest Morena"
+                        data-description="This song captures the intense longing and anticipation felt when deeply missing someone, painting a vivid picture of affection and desire."
+                        data-youtube-link="https://youtu.be/rN38yQIFXC8?si=3NqE1EjzuBMjHDhK"
+                        data-spotify-link="https://open.spotify.com/track/4TFRpNfvdaW1sNmoUtZ5fV?si=8235624304fe4b01"
+                        data-audio-preview="audios/Sabik - Illest Morena (Official Music Video)-[Trimmed by Rev.com].mp3">
+                        <div class="release-card" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-card-bg), var(--color-card-bg)), linear-gradient(45deg, #ffffff, #00bfff); background-origin: border-box; background-clip: padding-box, border-box;">
+                            <img src="https://i.scdn.co/image/ab67616d0000b273198116fe921c84e5b63c4274" alt="Neon Streets" class="release-image">
+                            <div class="release-info">
+                                <h3 class="release-title">Celeste</h3>
+                                <p class="release-artist">Tothapi</p>
+                                <div class="release-meta">
+                                    <span class="release-year">2024</span>
+                                    <span class="release-type">Single</span>
+                                </div>
+                            </div>
+                        </div>
+                  </a>
+            </div>
+      </section> 
+      
+      <br>
+
+      <!--Upcoming Events-->
+      <section class="section-container mb-5">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="events-container">
+          <!-- Event 1 -->
+            <div class="event-card">
+              <div class="event-date">
+                <span class="event-month">MAY</span>
+                <span class="event-day">3</span>
+              </div>
+              <div class="event-details">
+                <h4 class="event-title">Live at Kai Bar</h4>
+                <p class="event-location">Kai Mall, Caloocan City</p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-tickets">Buy Tickets</button>
+              </div>
+            </div>
+          <!-- Event 2 -->
+            <div class="event-card">
+              <div class="event-date">
+                <span class="event-month">APR</span>
+                <span class="event-day">30</span>
+              </div>
+              <div class="event-details">
+                <h4 class="event-title">Takeover Lounge</h4>
+                <p class="event-location">Pop-Up Katipunan</p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-tickets">Buy Tickets</button>
+              </div>
+            </div>
+          <!-- Event 3 -->
+            <div class="event-card">
+              <div class="event-date">
+                <span class="event-month">APR</span>
+                <span class="event-day">26</span>
+              </div>
+              <div class="event-details">
+                <h4 class="event-title">CULTUREFEST</h4>
+                <p class="event-location">Bridgetowne, Pasig City</p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-tickets">Buy Tickets</button>
+              </div>
+            </div>
+        </div>
+      </section>
+      
+      <br>
+      
+      <!--Latest Updates-->
+
+      <section class="section-container mb-5">
+        <h2 class="section-title">Latest Updates</h2>
+        <!-- Post 1 -->
+          <div class="post-card mb-4">
+            <div class="post-header">
+              <div class="post-user">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747717852/tothapi_nhl0m0.jpg" alt="TokiPal" class="post-user-image">
+                <div class="post-user-info">
+                  <h5 class="post-user-name">Tothapi</h5>
+                  <p class="post-date">March 6, 2025</p>
+                </div>
+              </div>
+            </div>
+            <div class="post-content">
+              <p class="post-text">happy birthday sa drummer namin goodluck sa tinatahak mong landas <br> HBD Aaron ❤️</p>
+              <div class="post-image-container">
+                <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747718036/tothapi_post1_hp7cgq.jpg" alt="Post image" class="post-image img-fluid">
+              </div>
+            </div>
+            <div class="post-actions">
+                <button class="post-action-btn"><i class="far fa-heart"></i> Like</button>
+                <button class="post-action-btn"><i class="fas fa-share"></i> Share</button>
+            </div>
+          </div>
+                  <!-- Post 2 -->
+                  <div class="post-card mb-4">
+                      <div class="post-header">
+                          <div class="post-user">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747717852/tothapi_nhl0m0.jpg" alt="TokiPal" class="post-user-image">
+                              <div class="post-user-info">
+                                  <h5 class="post-user-name">Tothapi</h5>
+                                  <p class="post-date">May 3, 2025</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="post-content">
+                          <p class="post-text">🖤🐦‍⬛</p>
+                          <div class="post-image-container">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747683601/most-engaging-post_bm41ug.png" alt="Post image" class="post-image img-fluid">
+                          </div>
+                      </div>
+                      <div class="post-actions">
+                          <button class="post-action-btn"><i class="far fa-heart"></i> Like</button>
+                          <button class="post-action-btn"><i class="fas fa-share"></i> Share</button>
+                      </div>
+                  </div>
+              </section>
+                      <!-- Gallery -->
+              <section class="section-container mb-5">
+                  <h2 class="section-title">Gallery</h2>
+                  <div style="overflow-x: auto; padding: 1rem 0; margin: 0 -1rem;">
+                      <style>
+                          /* Webkit browsers (Chrome, Safari) */
+                          div::-webkit-scrollbar {
+                              height: 8px;
+                          }
+                          div::-webkit-scrollbar-track {
+                              background: rgba(0, 0, 0, 0.1);
+                              border-radius: 4px;
+                          }
+                          div::-webkit-scrollbar-thumb {
+                              background: linear-gradient(90deg, #ffffff, #ff69b4, #00bfff, #32cd32, #9b4dca);
+                              border-radius: 4px;
+                          }
+                      </style>
+                      <div style="display: flex; gap: 1rem; padding: 0 1rem; min-width: min-content;">
+                          <!-- Gallery image 1 -->
+                          <div style="flex: 0 0 300px;">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1747683601/most-engaging-post_bm41ug.png" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                          </div>
+                          <!-- Gallery image 2 -->
+                          <div style="flex: 0 0 300px;">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357284/gallery-tothapi1_i8ixpt.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                          </div>
+                          <!-- Gallery image 3 -->
+                          <div style="flex: 0 0 300px;">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357291/gallery-totahpi2_ipvq3z.png" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                          </div>
+                          <!-- Duplicated images -->
+                          <div style="flex: 0 0 300px;">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357550/tot5_hrzgo5.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                          </div>
+                          <div style="flex: 0 0 300px;">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357654/tot7_mwvgyj.webp" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                          </div>
+                          <div style="flex: 0 0 300px;">
+                              <img src="https://res.cloudinary.com/dfwt0zxdu/image/upload/v1748357661/tot8_lg0ob3.jpg" alt="Gallery image" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;">
+                          </div>
+                      </div>
+                  </div>
+              </section>
+          </div>
+      </main>
+
+    <!-- Footer -->
+  <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo">
+                    <a href="#">Ampli<span class="gradient-text">Tune</span></a>
+                </div>
+                <p class="footer-description">Discover and support the growing indie music scene in the Philippines.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h4 class="footer-heading">Want to know more?</h4>
+                <ul class="footer-links">
+                    <li><a href="AboutUs/AboutUs.html">About Us</a></li>
+                    <li><a href="AboutUs/AboutUs.html#contact">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Copyright Info</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 Amplitune. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+  </div>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+  
+  <script>
+    // --- Modal Logic ---
+    const newReleaseCards = document.querySelectorAll('.new-release-card');
+    const modal = document.getElementById('newReleaseModal');
+    const modalContent = modal.querySelector('.modal-content');
+    const closeModalBtn = document.querySelector('.close-button');
+
+    const modalSongImage = document.getElementById('modalSongImage');
+    const modalSongTitle = document.getElementById('modalSongTitle');
+    const modalSongArtist = document.getElementById('modalSongArtist');
+    const modalSongDescription = document.getElementById('modalSongDescription');
+    const modalPlatformLinks = document.getElementById('modalPlatformLinks');
+
+    // Get references for the custom audio player elements within the modal
+    // NOW USING THE ID YOU ADDED
+    const modalAudioElement = document.getElementById('modalAudioPreview');
+    const modalAudioPlayerContainer = modalAudioElement.closest('.custom-audio-player-container'); // Find the parent container
+    
+    // Ensure these are selected AFTER the modalAudioElement is defined
+    const playPauseBtn = modalAudioPlayerContainer.querySelector('.play-pause-btn');
+    const progressBarContainer = modalAudioPlayerContainer.querySelector('.progress-bar-container');
+    const progressBar = modalAudioPlayerContainer.querySelector('.progress-bar');
+    const timeDisplay = modalAudioPlayerContainer.querySelector('.time-display');
+    const volumeSlider = modalAudioPlayerContainer.querySelector('.volume-slider');
+    const volumeIcon = modalAudioPlayerContainer.querySelector('.volume-icon');
+
+
+    newReleaseCards.forEach(card => {
+        card.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Pause any currently playing audio on the page
+            document.querySelectorAll('audio').forEach(otherAudio => {
+                if (otherAudio !== modalAudioElement && !otherAudio.paused) {
+                    otherAudio.pause();
+                    const otherPlayPauseBtn = otherAudio.closest('.custom-audio-player-container')?.querySelector('.play-pause-btn');
+                    if (otherPlayPauseBtn) {
+                        otherPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                }
+            });
+
+            // Populate modal content from data attributes
+            modalSongImage.src = card.dataset.image;
+            modalSongTitle.textContent = card.dataset.title;
+            modalSongArtist.textContent = card.dataset.artist;
+            modalSongDescription.textContent = card.dataset.description;
+
+            // Clear previous platform links
+            modalPlatformLinks.innerHTML = '';
+
+            // Add YouTube link if available
+            if (card.dataset.youtubeLink && card.dataset.youtubeLink !== 'YOUR_SABIK_YOUTUBE_LINK_HERE') {
+                const youtubeLink = document.createElement('a');
+                youtubeLink.href = card.dataset.youtubeLink;
+                youtubeLink.target = '_blank';
+                youtubeLink.setAttribute('aria-label', 'Listen on YouTube');
+                youtubeLink.innerHTML = '<i class="fa-brands fa-youtube platform-icon"></i>';
+                modalPlatformLinks.appendChild(youtubeLink);
+            }
+
+            // Add Spotify link if available
+            if (card.dataset.spotifyLink && card.dataset.spotifyLink !== 'YOUR_SABIK_SPOTIFY_LINK_HERE') {
+                const spotifyLink = document.createElement('a');
+                spotifyLink.href = card.dataset.spotifyLink;
+                spotifyLink.target = '_blank';
+                spotifyLink.setAttribute('aria-label', 'Listen on Spotify');
+                spotifyLink.innerHTML = '<i class="fa-brands fa-spotify platform-icon"></i>';
+                modalPlatformLinks.appendChild(spotifyLink);
+            }
+
+            // Handle audio preview
+            if (card.dataset.audioPreview) {
+                modalAudioElement.src = card.dataset.audioPreview;
+                modalAudioElement.load(); // Load the new audio source
+                modalAudioPlayerContainer.classList.remove('hidden'); // Show the audio player
+                // Reset play/pause button and time display for new song
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                progressBar.style.width = '0%';
+                timeDisplay.textContent = '0:00 / 0:00';
+                modalAudioElement.currentTime = 0; // Reset playback position
+            } else {
+                modalAudioPlayerContainer.classList.add('hidden'); // Hide if no preview
+                modalAudioElement.pause();
+                modalAudioElement.src = ''; // Clear source to prevent loading errors
+                modalAudioElement.currentTime = 0;
+            }
+
+            // Show the modal
+            modal.classList.add('is-visible');
+            modalContent.classList.remove('closing');
+        });
+    });
+
+    // Close modal when close button is clicked
+    closeModalBtn.addEventListener('click', () => {
+        closeModal();
+    });
+
+    // Close modal when clicking outside of the modal content
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        // Pause and reset audio preview in modal before closing
+        if (modalAudioElement && !modalAudioElement.paused) {
+            modalAudioElement.pause();
+            modalAudioElement.currentTime = 0;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; // Reset play icon
+            progressBar.style.width = '0%'; // Reset progress bar
+            timeDisplay.textContent = '0:00 / 0:00'; // Reset time display
+        }
+
+        // Add the closing class to the content to trigger its exit animation
+        modalContent.classList.add('closing');
+
+        // Wait for the exit animation to complete before hiding the modal entirely
+        modalContent.addEventListener('transitionend', handleTransitionEnd, { once: true });
+
+        function handleTransitionEnd() {
+            modal.classList.remove('is-visible'); // Hide the modal container
+            modalContent.classList.remove('closing'); // Clean up the closing class
+        }
+    }
+
+    // --- Custom Audio Player Functionality within Modal ---
+
+    // Format time for display
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Play/Pause button functionality
+    playPauseBtn.addEventListener('click', () => {
+        if (modalAudioElement.paused) {
+            modalAudioElement.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            modalAudioElement.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
+
+    // Update progress bar and time display
+    modalAudioElement.addEventListener('timeupdate', () => {
+        const progress = (modalAudioElement.currentTime / modalAudioElement.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+        timeDisplay.textContent = `${formatTime(modalAudioElement.currentTime)} / ${formatTime(modalAudioElement.duration)}`;
+    });
+
+    // Update duration when metadata is loaded (fixes NaN/undefined duration initially)
+    modalAudioElement.addEventListener('loadedmetadata', () => {
+        timeDisplay.textContent = `0:00 / ${formatTime(modalAudioElement.duration)}`;
+    });
+
+
+    // Seek functionality
+    progressBarContainer.addEventListener('click', (e) => {
+        const clickX = e.offsetX; // X position of the click relative to the container
+        const width = progressBarContainer.offsetWidth; // Total width of the progress bar container
+        const duration = modalAudioElement.duration;
+        modalAudioElement.currentTime = (clickX / width) * duration;
+    });
+
+    // Volume control
+    volumeSlider.addEventListener('input', () => {
+        modalAudioElement.volume = volumeSlider.value;
+        if (modalAudioElement.volume === 0) {
+            volumeIcon.classList.remove('fa-volume-up');
+            volumeIcon.classList.add('fa-volume-mute');
+        } else {
+            volumeIcon.classList.remove('fa-volume-mute');
+            volumeIcon.classList.add('fa-volume-up');
+        }
+    });
+
+    // Mute/Unmute functionality
+    let lastVolume = 1; // Store last volume before muting
+    volumeIcon.addEventListener('click', () => {
+        if (modalAudioElement.volume === 0) {
+            modalAudioElement.volume = lastVolume; // Restore last volume
+            volumeSlider.value = lastVolume;
+            volumeIcon.classList.remove('fa-volume-mute');
+            volumeIcon.classList.add('fa-volume-up');
+        } else {
+            lastVolume = modalAudioElement.volume; // Save current volume
+            modalAudioElement.volume = 0;
+            volumeSlider.value = 0;
+            volumeIcon.classList.remove('fa-volume-up');
+            volumeIcon.classList.add('fa-volume-mute');
+        }
+    });
+
+    // Handle audio ending
+    modalAudioElement.addEventListener('ended', () => {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        progressBar.style.width = '0%';
+        modalAudioElement.currentTime = 0; // Reset to beginning
+    });
+  </script>
+</body>
+</html>
